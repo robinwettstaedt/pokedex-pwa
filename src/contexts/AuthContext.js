@@ -1,37 +1,32 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { auth } from '../utils/initFirebase';
+import React, { useEffect, useState } from 'react';
+import app from '../utils/Firebase';
+import Spinner from '../components/Spinner/Spinner';
 
-const AuthContext = React.createContext();
+export const AuthContext = React.createContext();
 
-export function useAuth() {
-  return useContext(AuthContext);
-}
-
-export function AuthProvider({ children }) {
-  const [currentUser, setCurrentUser] = useState();
-  const [loading, setLoading] = useState(true);
-
-  function logout() {
-    return auth.signOut();
-  }
+export const AuthProvider = ({ children }) => {
+  const [currentUser, setCurrentUser] = useState(null);
+  const [pending, setPending] = useState(true);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    app.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);
-      setLoading(false);
+      setPending(false);
     });
-
-    return unsubscribe;
   }, []);
 
-  const value = {
-    currentUser,
-    logout,
-  };
+  // loading spinner
+  // if (pending) {
+  //   return <Spinner />;
+  // }
 
   return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
+    <AuthContext.Provider
+      value={{
+        currentUser,
+      }}
+    >
+      {children}
     </AuthContext.Provider>
   );
-}
+};

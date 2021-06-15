@@ -1,19 +1,37 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import FirebaseAuth from './FirebaseAuth';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Home from './Home';
+import Login from './Login';
+import SignUp from './SignUp/SignUp';
 import { AuthProvider } from '../contexts/AuthContext';
-import Test from './Test';
+import PrivateRoute from './PrivateRoute';
+import DexList from './DexList';
+import Nav from './Nav/Nav';
+import DexEntry from './DexEntry';
+import Profile from './Profile';
 
-function App() {
-  // const { currentUser } = useAuth();
+const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <FirebaseAuth />
-        <Test />
+        <div>
+          <Route path="/" component={Nav} />
+
+          <PrivateRoute exact path="/" component={Home} />
+
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/signup" component={SignUp} />
+
+          <PrivateRoute exact path="/profile" component={Profile} />
+
+          <Route exact path="/pokedex" component={DexList} />
+          <Route exact path="/pokedex/:id">
+            <DexEntry />
+          </Route>
+        </div>
       </Router>
     </AuthProvider>
   );
-}
+};
 
 export default App;
