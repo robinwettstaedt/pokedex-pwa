@@ -5,7 +5,7 @@ import Spinner from '../components/Spinner/Spinner';
 export const AuthContext = React.createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [currentUser, setCurrentUser] = useState(null);
+  const [currentUser, setCurrentUser] = useState();
   const [pending, setPending] = useState(true);
 
   useEffect(() => {
@@ -24,6 +24,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         currentUser,
+        pending,
       }}
     >
       {children}
