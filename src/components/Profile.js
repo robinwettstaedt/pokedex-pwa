@@ -14,6 +14,8 @@ function Profile() {
     });
   };
 
+  // above works, only missing setting the curretnUser.photoUrl to uploaded image
+
   const uploadSubmit = () => {};
   return (
     <div>

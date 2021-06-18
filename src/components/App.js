@@ -13,7 +13,7 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Route path="/" component={Nav} />
+        <PrivateRoute path="/" component={Nav} />
 
         <PrivateRoute exact path="/" component={Home} />
 
