@@ -15,10 +15,9 @@ export const AuthProvider = ({ children }) => {
     });
   }, []);
 
-  // loading spinner
-  // if (pending) {
-  //   return <Spinner />;
-  // }
+  if (pending) {
+    return <Spinner />;
+  }
 
   return (
     <AuthContext.Provider
