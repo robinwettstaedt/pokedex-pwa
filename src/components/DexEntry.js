@@ -13,6 +13,7 @@ function DexEntry() {
 
   // Firestore query states
   const [caught, setCaught] = useState();
+  const [pokemonImage, setPokemonImage] = useState();
 
   // getting the route's parameter
   // routeID for getting the pictures out of public
@@ -75,10 +76,23 @@ function DexEntry() {
           }
         });
     };
+
+    const getUserImage = () => {
+      app
+        .storage()
+        .ref()
+        .child(`pokemonImages/${routeID}.png`)
+        .getDownloadURL()
+        .then((url) => {
+          setPokemonImage(url);
+        });
+    };
+
+    getUserImage();
     fetchFirestoreData();
 
     return unsubscribe;
-  }, [currentUser.uid, id]);
+  }, [currentUser.uid, id, routeID]);
 
   // const fetchData = async () => {
   //   setIsError(false);
@@ -113,7 +127,8 @@ function DexEntry() {
       <p>This will be pokemon number: {id}</p>
       <p></p>
       <img
-        src={process.env.PUBLIC_URL + `/images/${routeID}.png`}
+        src={pokemonImage}
+        // src={process.env.PUBLIC_URL + `/images/${routeID}.png`}
         alt={`Pokemon Number: ${id}`}
       />
       <button onClick={handleClick}>new user entry</button>
