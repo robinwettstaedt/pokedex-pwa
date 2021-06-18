@@ -30,34 +30,6 @@ function DexEntry() {
   // getting the current logged in user from the Context
   const { currentUser } = useContext(AuthContext);
 
-  // button for now, will change
-  // function for adding a new user to the firestore db
-  // in order to keep track of caught Pokemon
-  const handleClick = () => {
-    const userExists = app
-      .firestore()
-      .collection('caughtPokemon')
-      .where('uid', '==', `${currentUser.uid}`);
-
-    if (!userExists) {
-      const createPokemonList = () => {
-        let numbersObj = {};
-        for (let i = 1; i < 152; i++) {
-          numbersObj[`${i}`] = false;
-        }
-        return numbersObj;
-      };
-
-      let list = createPokemonList();
-
-      let pokemonRef = app.firestore().collection('caughtPokemon');
-      pokemonRef.add({
-        uid: currentUser.uid,
-        caughtPokemonList: list,
-      });
-    }
-  };
-
   useEffect(() => {
     let unsubscribe;
 
@@ -77,7 +49,7 @@ function DexEntry() {
         });
     };
 
-    const getUserImage = () => {
+    const getPokemonImage = () => {
       app
         .storage()
         .ref()
@@ -88,7 +60,7 @@ function DexEntry() {
         });
     };
 
-    getUserImage();
+    getPokemonImage();
     fetchFirestoreData();
 
     return unsubscribe;
@@ -131,7 +103,6 @@ function DexEntry() {
         // src={process.env.PUBLIC_URL + `/images/${routeID}.png`}
         alt={`Pokemon Number: ${id}`}
       />
-      <button onClick={handleClick}>new user entry</button>
     </div>
   );
 }
