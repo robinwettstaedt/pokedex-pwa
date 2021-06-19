@@ -9,7 +9,6 @@ function Nav() {
 
   useEffect(() => {
     // getting the default profile image from the firebase storage
-
     const getUserImage = () => {
       app
         .storage()
@@ -30,12 +29,14 @@ function Nav() {
 
   return (
     <div>
+      <img src={userImageURL} height={30} alt="user" />
+      <span> {currentUser.displayName}</span>
+      <br />
       <Link to="/">Home </Link>
       <Link to="/profile">Profile </Link>
       <Link to="/pokedex">Pokedex</Link>
       <Link to="/pokedex/1">Bisa</Link>
       <Link to="/pokedex/150">mewtu</Link>
-      <img src={userImageURL} height={30} alt="user" />
     </div>
   );
 }
