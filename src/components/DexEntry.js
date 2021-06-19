@@ -6,14 +6,10 @@ import { AuthContext } from '../contexts/AuthContext';
 // import pic from '../images/001.png';
 
 function DexEntry() {
-  // PokeAPI query states
-  const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
   // Firestore query states
-  const [caught, setCaught] = useState();
+  const [docData, setDocData] = useState();
   const [pokemonImage, setPokemonImage] = useState();
+  const [documentName, setDocumentName] = useState();
 
   // getting the route's parameter
   // routeID for getting the pictures out of public
@@ -30,8 +26,22 @@ function DexEntry() {
   // getting the current logged in user from the Context
   const { currentUser } = useContext(AuthContext);
 
+  const catchPokemon = async () => {
+    console.log(docData[0].caughtPokemonList);
+    let listReference = docData[0].caughtPokemonList;
+    listReference[id].caught = true;
+
+    console.log(documentName);
+    const db = app.firestore();
+    await db.collection('caughtPokemon').doc(documentName).set({
+      uid: currentUser.uid,
+      caughtPokemonList: listReference,
+    });
+  };
+
   useEffect(() => {
     let unsubscribe;
+    let data;
 
     const fetchFirestoreData = async () => {
       const db = app.firestore();
@@ -39,13 +49,17 @@ function DexEntry() {
       unsubscribe = pokemonRef
         .where('uid', '==', `${currentUser.uid}`)
         .onSnapshot((querySnapshot) => {
-          const caughtPokemon = querySnapshot.docs.map((doc) => {
+          const document = querySnapshot.docs.map((doc) => {
+            setDocumentName(doc.id);
             return doc.data();
           });
-          if (caughtPokemon.length > 0) {
-            console.log(caughtPokemon[0].caughtPokemonList[id]);
-            setCaught(caughtPokemon);
+          if (document.length > 0) {
+            console.log(document[0].caughtPokemonList[id]);
+            data = document;
           }
+          setDocData(data);
+
+          // setListReference(data);
         });
     };
 
@@ -66,43 +80,23 @@ function DexEntry() {
     return unsubscribe;
   }, [currentUser.uid, id, routeID]);
 
-  // const fetchData = async () => {
-  //   setIsError(false);
-  //   setIsLoading(true);
-
-  //   try {
-  //     const response = await axios(`https://pokeapi.co/api/v2/pokemon/1`);
-  //     setData(response.data);
-
-  //     try {
-  //       const pictureResponse = await axios(data.sprites.front_default);
-  //       setPicture(pictureResponse.data);
-  //     } catch (error) {}
-  //   } catch (error) {
-  //     setIsError(true);
-  //     console.log(error);
-  //   }
-
-  //   setIsLoading(false);
-  // };
-
-  // for api queries
-  if (isLoading) {
-    return <h1>is Loading....</h1>;
-  }
-  if (isError) {
-    return <h1>Errrrrooorrr</h1>;
-  }
+  // // for api queries
+  // if (isLoading) {
+  //   return <h1>is Loading....</h1>;
+  // }
+  // if (isError) {
+  //   return <h1>Errrrrooorrr</h1>;
+  // }
 
   return (
     <div>
       <p>This will be pokemon number: {id}</p>
-      <p></p>
       <img
         src={pokemonImage}
         // src={process.env.PUBLIC_URL + `/images/${routeID}.png`}
         alt={`Pokemon Number: ${id}`}
       />
+      <button onClick={catchPokemon}> Catch this pokemon</button>
     </div>
   );
 }
