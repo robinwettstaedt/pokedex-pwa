@@ -27,11 +27,13 @@ function DexEntry() {
   const { currentUser } = useContext(AuthContext);
 
   const catchPokemon = async () => {
-    console.log(docData[0].caughtPokemonList);
     let listReference = docData[0].caughtPokemonList;
-    listReference[id].caught = true;
+    if (docData[0].caughtPokemonList[id].caught == false) {
+      listReference[id].caught = true;
+    } else {
+      listReference[id].caught = false;
+    }
 
-    console.log(documentName);
     const db = app.firestore();
     await db.collection('caughtPokemon').doc(documentName).set({
       uid: currentUser.uid,
