@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import app from '../utils/Firebase';
+import firebase from 'firebase';
 import { AuthContext } from '../contexts/AuthContext';
 // import pic from '../images/001.png';
 
@@ -10,6 +11,7 @@ function DexEntry() {
   const [docData, setDocData] = useState();
   const [pokemonImage, setPokemonImage] = useState();
   const [documentName, setDocumentName] = useState();
+  const [isCaught, setIsCaught] = useState();
 
   // getting the route's parameter
   // routeID for getting the pictures out of public
@@ -26,10 +28,12 @@ function DexEntry() {
   // getting the current logged in user from the Context
   const { currentUser } = useContext(AuthContext);
 
+  // function to change the caught value of this route's pokemon in firestore
   const catchPokemon = async () => {
     let listReference = docData[0].caughtPokemonList;
     if (docData[0].caughtPokemonList[id].caught == false) {
       listReference[id].caught = true;
+      listReference[id].caughtAt = firebase.firestore.Timestamp.now();
     } else {
       listReference[id].caught = false;
     }
@@ -43,9 +47,9 @@ function DexEntry() {
 
   useEffect(() => {
     let unsubscribe;
-    let data;
 
     const fetchFirestoreData = async () => {
+      let data;
       const db = app.firestore();
       let pokemonRef = db.collection('caughtPokemon');
       unsubscribe = pokemonRef
@@ -56,12 +60,10 @@ function DexEntry() {
             return doc.data();
           });
           if (document.length > 0) {
-            console.log(document[0].caughtPokemonList[id]);
             data = document;
           }
           setDocData(data);
-
-          // setListReference(data);
+          setIsCaught(data[0].caughtPokemonList[id].caught);
         });
     };
 
@@ -93,6 +95,8 @@ function DexEntry() {
   return (
     <div>
       <p>This will be pokemon number: {id}</p>
+      {isCaught == true ? <p>CAUGHT</p> : <p>NOT CAUGHT</p>}
+
       <img
         src={pokemonImage}
         // src={process.env.PUBLIC_URL + `/images/${routeID}.png`}

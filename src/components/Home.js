@@ -19,7 +19,6 @@ const Home = () => {
             return doc.data();
           });
           setUserExists(dbEntries.length);
-          console.log(dbEntries.length);
         });
 
       if (userExists < 1) {
