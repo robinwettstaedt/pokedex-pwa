@@ -37,6 +37,7 @@ function Profile() {
       <Link to="/profile/delete">Delete your Account</Link>
       <Link to="/profile/avatar">Change your Avatar Image</Link>
       <Link to="/profile/username">Change your Username</Link>
+      <Link to="/profile/passwordchange">Change your Password</Link>
     </div>
   );
 }

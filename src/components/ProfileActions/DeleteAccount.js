@@ -9,7 +9,8 @@ function DeleteAccount() {
       await currentUser.delete();
     } catch (error) {
       alert(
-        'Please sign out and log in again. In order to delete your account you must have signed in recently.'
+        'Please sign out and log in again. In order to delete your account you must have signed in recently. ',
+        error
       );
     }
   };
