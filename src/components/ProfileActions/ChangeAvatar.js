@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
-import { app } from '../../utils/Firebase';
+import app from '../../utils/Firebase';
 
 function ChangeAvatar() {
   const { currentUser } = useContext(AuthContext);

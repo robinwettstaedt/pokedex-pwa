@@ -1,25 +1,33 @@
-import React, { useCallback, useContext } from 'react';
+import React, { useState, useCallback, useContext } from 'react';
 import { useHistory, withRouter, Redirect } from 'react-router-dom';
 import app from '../../utils/Firebase';
 import { AuthContext } from '../../contexts/AuthContext';
 
 const SignUp = () => {
   let history = useHistory();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+
+  const handleEmailChange = (e) => {
+    setEmail(e.target.value);
+  };
+
+  const handlePasswordChange = (e) => {
+    setPassword(e.target.value);
+  };
 
   const handleSignUp = useCallback(
     async (event) => {
       event.preventDefault();
-      const { email, password } = event.target.elements;
+
       try {
-        await app
-          .auth()
-          .createUserWithEmailAndPassword(email.value, password.value);
+        await app.auth().createUserWithEmailAndPassword(email, password);
         history.push('/');
       } catch (error) {
-        alert(error);
+        alert('There has been an error: ', error);
       }
     },
-    [history]
+    [history, email, password]
   );
   const { currentUser } = useContext(AuthContext);
   if (currentUser) {
@@ -32,14 +40,19 @@ const SignUp = () => {
       <form onSubmit={handleSignUp}>
         <label>
           Email
-          <input name="email" type="email" placeholder="Email" />
+          <input name="email" type="email" onChange={handleEmailChange} />
         </label>
         <label>
           Password
-          <input name="password" type="password" placeholder="Password" />
+          <input
+            name="password"
+            type="password"
+            onChange={handlePasswordChange}
+          />
         </label>
         <button type="submit">Sign Up</button>
       </form>
+      <p>You can change your username in the profile section of the app</p>
     </div>
   );
 };

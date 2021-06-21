@@ -8,16 +8,6 @@ export const AuthProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState();
   const [pending, setPending] = useState(true);
 
-  // notes for firebase User object
-  // currentUser.updateProfile(
-  //  {photoURL: null,   in case of deleting current value
-  //   displayName: "knoff" // both Strings
-  // )
-  //
-  // photoURL
-
-  // updateEmail()
-
   useEffect(() => {
     app.auth().onAuthStateChanged((user) => {
       setCurrentUser(user);

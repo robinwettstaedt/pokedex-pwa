@@ -16,7 +16,7 @@ const Login = () => {
           .signInWithEmailAndPassword(email.value, password.value);
         history.push('/');
       } catch (error) {
-        alert(error);
+        alert('There has been an error: ', error);
       }
     },
     [history]

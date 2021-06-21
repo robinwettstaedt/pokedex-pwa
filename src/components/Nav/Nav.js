@@ -31,12 +31,11 @@ function Nav() {
     <div>
       <img src={userImageURL} height={30} alt="user" />
       <span> {currentUser.displayName}</span>
+      <button onClick={() => app.auth().signOut()}>Sign out</button>
       <br />
       <Link to="/">Home </Link>
       <Link to="/profile">Profile </Link>
-      <Link to="/pokedex">Pokedex</Link>
-      <Link to="/pokedex/1">Bisa</Link>
-      <Link to="/pokedex/150">mewtu</Link>
+      <Link to="/pokedex">Pokedex </Link>
     </div>
   );
 }

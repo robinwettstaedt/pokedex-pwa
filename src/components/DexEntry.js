@@ -4,7 +4,6 @@ import axios from 'axios';
 import app from '../utils/Firebase';
 import firebase from 'firebase';
 import { AuthContext } from '../contexts/AuthContext';
-// import pic from '../images/001.png';
 
 function DexEntry() {
   // Firestore query states

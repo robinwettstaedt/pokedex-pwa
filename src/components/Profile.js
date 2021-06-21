@@ -35,8 +35,11 @@ function Profile() {
     <div>
       <p> This is the profile of {currentUser.displayName}</p>
       <Link to="/profile/delete">Delete your Account</Link>
+      <br />
       <Link to="/profile/avatar">Change your Avatar Image</Link>
+      <br />
       <Link to="/profile/username">Change your Username</Link>
+      <br />
       <Link to="/profile/passwordchange">Change your Password</Link>
     </div>
   );

@@ -9,7 +9,7 @@ const Home = () => {
   const [userExists, setUserExists] = useState(1);
 
   useEffect(() => {
-    const queryForUserID = async () => {
+    const addNewUserFirestoreEntry = async () => {
       const db = app.firestore();
       let pokemonRef = db.collection('caughtPokemon');
       pokemonRef
@@ -32,22 +32,22 @@ const Home = () => {
 
         let list = createPokemonList();
         let pokemonRef = app.firestore().collection('caughtPokemon');
-        pokemonRef.add({
+        pokemonRef.doc(currentUser.uid).set({
           uid: currentUser.uid,
           caughtPokemonList: list,
         });
       }
     };
 
-    queryForUserID();
+    addNewUserFirestoreEntry();
   }, [currentUser.uid, userExists.length, userExists]);
+
   return (
     <>
       <h1>Home</h1>
       {currentUser && <p>currentuser email: {currentUser.uid}</p>}
-      <button onClick={() => app.auth().signOut()}>Sign out</button>
+
       <Link to="/profile">visit profile</Link>
-      {/* <button onClick={createFirestoreReference}>create my reference</button> */}
     </>
   );
 };

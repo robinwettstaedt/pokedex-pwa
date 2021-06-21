@@ -10,6 +10,8 @@ import DexEntry from './DexEntry';
 import Profile from './Profile';
 import DeleteAccount from './ProfileActions/DeleteAccount';
 import ChangePassword from './ProfileActions/ChangePassword';
+import ChangeAvatar from './ProfileActions/ChangeAvatar';
+import ChangeUsername from './ProfileActions/ChangeUsername';
 
 const App = () => {
   return (
@@ -24,6 +26,12 @@ const App = () => {
 
         <PrivateRoute exact path="/profile" component={Profile} />
         <PrivateRoute exact path="/profile/delete" component={DeleteAccount} />
+        <PrivateRoute exact path="/profile/avatar" component={ChangeAvatar} />
+        <PrivateRoute
+          exact
+          path="/profile/username"
+          component={ChangeUsername}
+        />
         <PrivateRoute
           exact
           path="/profile/passwordchange"
