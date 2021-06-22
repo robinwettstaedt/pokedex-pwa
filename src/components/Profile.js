@@ -5,35 +5,38 @@ import app from '../utils/Firebase';
 
 function Profile() {
   const { currentUser } = useContext(AuthContext);
+  const [count, setCount] = useState(0);
 
-  // useEffect(() => {
-  //   let unsubscribe;
+  useEffect(() => {
+    const fetchFirestoreData = async () => {
+      try {
+        const db = app.firestore();
+        let dbRef = db.collection('caughtPokemon').doc(currentUser.uid);
 
-  //   const fetchFirestoreData = async () => {
-  //     const db = app.firestore();
-  //     let pokemonRef = db.collection('caughtPokemon');
-  //     unsubscribe = pokemonRef
-  //       .where('uid', '==', `${currentUser.uid}`)
-  //       .where('caught', '==', true)
-  //       .onSnapshot((querySnapshot) => {
-  //         const caughtPokemon = querySnapshot.docs.map((doc) => {
-  //           return doc.data();
-  //         });
-  //         if (caughtPokemon.length > 0) {
-  //           console.log(caughtPokemon[0].caughtPokemonList);
-  //           //set State
-  //         }
-  //       });
-  //   };
+        const doc = await dbRef.get();
+        const data = doc.data();
+        const caughtList = data.caughtPokemonList;
 
-  //   fetchFirestoreData();
+        let caughtCount = 0;
 
-  //   return unsubscribe;
-  // }, [currentUser.uid]);
+        for (let i = 1; i < 152; i++) {
+          if (caughtList[i].caught === true) {
+            caughtCount++;
+          }
+          setCount(caughtCount);
+        }
+      } catch (error) {
+        console.log('There has been an error: ', error);
+      }
+    };
+
+    fetchFirestoreData();
+  }, [currentUser.uid]);
 
   return (
     <div>
       <p> This is the profile of {currentUser.displayName}</p>
+      <p>You have caught {count} / 151 Pokemon</p>
       <Link to="/profile/delete">Delete your Account</Link>
       <br />
       <Link to="/profile/avatar">Change your Avatar Image</Link>

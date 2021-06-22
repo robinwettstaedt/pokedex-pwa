@@ -1,9 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import { ModalContext } from '../../contexts/ModalContext';
+import Modal from '../Modal/Modal';
 
 function ChangeUsername() {
   const { currentUser } = useContext(AuthContext);
-  const [newUsername, setNewUsername] = useState();
+  const { showModal, setShowModal } = useContext(ModalContext);
+  const [newUsername, setNewUsername] = useState('');
+
+  const modalContent = <div>Ey jo miene freunde</div>;
 
   const handleChange = (e) => {
     setNewUsername(e.target.value);
@@ -12,6 +17,7 @@ function ChangeUsername() {
   const setUsername = async (e) => {
     e.preventDefault();
     try {
+      setShowModal(true);
       await currentUser.updateProfile({
         displayName: newUsername,
       });
@@ -29,6 +35,12 @@ function ChangeUsername() {
         </label>
         <input type="submit" value="Submit" />
       </form>
+
+      <Modal
+        setShowModal={setShowModal}
+        showModal={showModal}
+        modalContent={modalContent}
+      />
     </div>
   );
 }

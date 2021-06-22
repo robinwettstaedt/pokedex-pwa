@@ -1,9 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import app from '../../utils/Firebase';
+import { ModalContext } from '../../contexts/ModalContext';
+import Modal from '../Modal/Modal';
 
 function ChangeAvatar() {
   const { currentUser } = useContext(AuthContext);
+  const { showModal, setShowModal } = useContext(ModalContext);
+
+  const [modalContent, setModalContent] = useState(<p>default modalContent</p>);
 
   const onFileInput = async (e) => {
     try {
@@ -17,8 +22,21 @@ function ChangeAvatar() {
       await currentUser.updateProfile({
         photoURL: url,
       });
-    } catch (error) {
-      alert('There has been an error: ', error);
+      setModalContent(
+        <p>
+          Your Avatar Image has been updated! Move to another page to see the
+          changes.
+        </p>
+      );
+      setShowModal(true);
+    } catch {
+      setModalContent(
+        <p>
+          There has been an issue with the Avatar change. Please relog and try
+          again.
+        </p>
+      );
+      setShowModal(true);
     }
   };
 
@@ -27,14 +45,34 @@ function ChangeAvatar() {
       await currentUser.updateProfile({
         photoURL: null,
       });
+
+      setModalContent(
+        <p>
+          Your Avatar Image has been updated to the default! Move to another
+          page to see the changes.
+        </p>
+      );
+      setShowModal(true);
     } catch (error) {
-      alert('There has been an error: ', error);
+      setModalContent(
+        <p>
+          There has been an issue with the Avatar change. Please relog and try
+          again.
+        </p>
+      );
+      setShowModal(true);
     }
   };
   return (
     <div>
       <input type="file" onChange={onFileInput} />
       <button onClick={restoreDefaultImage}>Delete my Avatar picture</button>
+      <Modal
+        setShowModal={setShowModal}
+        showModal={showModal}
+        modalContent={modalContent}
+      />
+      ;
     </div>
   );
 }

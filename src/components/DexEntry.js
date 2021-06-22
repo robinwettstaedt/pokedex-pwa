@@ -7,9 +7,8 @@ import { AuthContext } from '../contexts/AuthContext';
 
 function DexEntry() {
   // Firestore query states
-  const [docData, setDocData] = useState();
+  const [caughtList, setCaughtList] = useState();
   const [pokemonImage, setPokemonImage] = useState();
-  const [documentName, setDocumentName] = useState();
   const [isCaught, setIsCaught] = useState();
 
   // getting the route's parameter
@@ -27,10 +26,26 @@ function DexEntry() {
   // getting the current logged in user from the Context
   const { currentUser } = useContext(AuthContext);
 
+  const fetchFirestoreData = async () => {
+    try {
+      const db = app.firestore();
+      let dbRef = db.collection('caughtPokemon').doc(currentUser.uid);
+
+      const doc = await dbRef.get();
+      const data = doc.data();
+      const caughtList = data.caughtPokemonList;
+
+      setCaughtList(caughtList);
+      setIsCaught(caughtList[id].caught);
+    } catch (error) {
+      console.log('There has been an error: ', error);
+    }
+  };
+
   // function to change the caught value of this route's pokemon in firestore
   const catchPokemon = async () => {
-    let listReference = docData[0].caughtPokemonList;
-    if (docData[0].caughtPokemonList[id].caught == false) {
+    let listReference = caughtList;
+    if (isCaught === false) {
       listReference[id].caught = true;
       listReference[id].caughtAt = firebase.firestore.Timestamp.now();
     } else {
@@ -38,49 +53,28 @@ function DexEntry() {
     }
 
     const db = app.firestore();
-    await db.collection('caughtPokemon').doc(documentName).set({
+    await db.collection('caughtPokemon').doc(currentUser.uid).set({
       uid: currentUser.uid,
       caughtPokemonList: listReference,
     });
+
+    fetchFirestoreData();
   };
 
   useEffect(() => {
-    let unsubscribe;
-
-    const fetchFirestoreData = async () => {
-      let data;
-      const db = app.firestore();
-      let pokemonRef = db.collection('caughtPokemon');
-      unsubscribe = pokemonRef
-        .where('uid', '==', `${currentUser.uid}`)
-        .onSnapshot((querySnapshot) => {
-          const document = querySnapshot.docs.map((doc) => {
-            setDocumentName(doc.id);
-            return doc.data();
-          });
-          if (document.length > 0) {
-            data = document;
-          }
-          setDocData(data);
-          setIsCaught(data[0].caughtPokemonList[id].caught);
-        });
-    };
-
-    const getPokemonImage = () => {
-      app
+    const getPokemonImage = async () => {
+      const url = await app
         .storage()
         .ref()
         .child(`pokemonImages/${routeID}.png`)
-        .getDownloadURL()
-        .then((url) => {
-          setPokemonImage(url);
-        });
+        .getDownloadURL();
+
+      setPokemonImage(url);
     };
 
     getPokemonImage();
     fetchFirestoreData();
-
-    return unsubscribe;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser.uid, id, routeID]);
 
   // // for api queries

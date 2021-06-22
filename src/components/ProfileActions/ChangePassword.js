@@ -1,9 +1,14 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
+import { ModalContext } from '../../contexts/ModalContext';
+import Modal from '../Modal/Modal';
 
 function ChangeUsername() {
   const { currentUser } = useContext(AuthContext);
-  const [newPassword, setNewPassword] = useState();
+  const { showModal, setShowModal } = useContext(ModalContext);
+
+  const [newPassword, setNewPassword] = useState('');
+  const [modalContent, setModalContent] = useState(<p>default modalContent</p>);
 
   const handleChange = (e) => {
     setNewPassword(e.target.value);
@@ -13,11 +18,21 @@ function ChangeUsername() {
     e.preventDefault();
     try {
       await currentUser.updatePassword(newPassword);
-    } catch (error) {
-      alert(
-        'Please sign out and log in again. In order to delete your account you must have signed in recently. ',
-        error
+      setModalContent(
+        <p>
+          modalContent for confirmation: Your Password has been updated
+          successfully.
+        </p>
       );
+      setShowModal(true);
+    } catch {
+      setModalContent(
+        <p>
+          modalContent for error: 'Please sign out and log in again. In order to
+          delete your account you must have signed in recently. ',
+        </p>
+      );
+      setShowModal(true);
     }
   };
 
@@ -30,6 +45,11 @@ function ChangeUsername() {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      <Modal
+        setShowModal={setShowModal}
+        showModal={showModal}
+        modalContent={modalContent}
+      />
     </div>
   );
 }

@@ -6,41 +6,42 @@ import { AuthContext } from '../contexts/AuthContext';
 const Home = () => {
   const { currentUser } = useContext(AuthContext);
 
-  const [userExists, setUserExists] = useState(1);
+  const [data, setData] = useState(1);
 
   useEffect(() => {
     const addNewUserFirestoreEntry = async () => {
-      const db = app.firestore();
-      let pokemonRef = db.collection('caughtPokemon');
-      pokemonRef
-        .where('uid', '==', `${currentUser.uid}`)
-        .onSnapshot((querySnapshot) => {
-          const dbEntries = querySnapshot.docs.map((doc) => {
-            return doc.data();
+      try {
+        const db = app.firestore();
+        let dbRef = db.collection('caughtPokemon').doc(currentUser.uid);
+
+        const doc = await dbRef.get();
+        const data = doc.data();
+
+        setData(data);
+
+        if (!data) {
+          const createPokemonList = () => {
+            let numbersObj = {};
+            for (let i = 1; i < 152; i++) {
+              numbersObj[`${i}`] = { caught: false };
+            }
+            return numbersObj;
+          };
+
+          let list = createPokemonList();
+          let pokemonRef = app.firestore().collection('caughtPokemon');
+          pokemonRef.doc(currentUser.uid).set({
+            uid: currentUser.uid,
+            caughtPokemonList: list,
           });
-          setUserExists(dbEntries.length);
-        });
-
-      if (userExists < 1) {
-        const createPokemonList = () => {
-          let numbersObj = {};
-          for (let i = 1; i < 152; i++) {
-            numbersObj[`${i}`] = { caught: false };
-          }
-          return numbersObj;
-        };
-
-        let list = createPokemonList();
-        let pokemonRef = app.firestore().collection('caughtPokemon');
-        pokemonRef.doc(currentUser.uid).set({
-          uid: currentUser.uid,
-          caughtPokemonList: list,
-        });
+        }
+      } catch (error) {
+        console.log('There has been an error: ', error);
       }
     };
 
     addNewUserFirestoreEntry();
-  }, [currentUser.uid, userExists.length, userExists]);
+  }, [currentUser.uid]);
 
   return (
     <>

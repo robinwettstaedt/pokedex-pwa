@@ -50,6 +50,11 @@ function DexList() {
           } else {
             list.push(
               <li key={number}>
+                <img
+                  height={20}
+                  src={process.env.PUBLIC_URL + `/icons/pokeball-white.png`}
+                  alt={`Pokemon Number: ${number}`}
+                />
                 <Link to={`/pokedex/${i}`}>
                   #{number} {namesArray[i - 1]}
                 </Link>
