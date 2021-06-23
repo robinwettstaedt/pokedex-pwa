@@ -9,6 +9,10 @@ const PokemonCard = ({ number, dateCaught, first }) => {
   const [secondType, setSecondType] = useState('');
   const [pokemonImage, setPokemonImage] = useState(null);
 
+  const { isLoading, error, data } = useQuery('queryDetails', () =>
+    axios.get(`https://pokeapi.co/api/v2/pokemon/${number}`)
+  );
+
   let pictureID;
   if (number < 10) {
     pictureID = `00${number}`;
@@ -42,10 +46,20 @@ const PokemonCard = ({ number, dateCaught, first }) => {
   };
 
   useEffect(() => {
-    getDetails();
     getPokemonImage();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  if (error) {
+    return <h1>Error: {error.message}</h1>;
+  }
+  if (isLoading) {
+    return (
+      <div>
+        <Spinner />
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -63,6 +77,7 @@ const PokemonCard = ({ number, dateCaught, first }) => {
         I was caught at:
         {dateCaught.toDate().toString().substring(4, 15)}
       </p>
+      <button onClick={getDetails}>get Details</button>
     </div>
   );
 };

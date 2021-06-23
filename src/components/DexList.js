@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import namesArray from '../utils/PokemonNames';
 import app from '../utils/Firebase';
-import firebase from 'firebase';
 import { AuthContext } from '../contexts/AuthContext';
 
 function DexList() {

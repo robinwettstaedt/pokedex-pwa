@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import app from '../utils/Firebase';
 import { AuthContext } from '../contexts/AuthContext';
 import PokemonCard from './PokemonCard';
 
 const Home = () => {
   const { currentUser } = useContext(AuthContext);
-  const [cardsToRender, setCardsToRender] = useState(null);
+  const [initialCards, setInitialCards] = useState(null);
+  const [additionalCards, setAdditionalCards] = useState(null);
+  const [renderAdditional, setRenderAdditional] = useState(false);
 
   const createPokemonList = () => {
     let numbersObj = {};
@@ -14,6 +15,10 @@ const Home = () => {
       numbersObj[`${i}`] = { caught: false };
     }
     return numbersObj;
+  };
+
+  const loadAdditionalCards = () => {
+    setRenderAdditional(true);
   };
 
   useEffect(() => {
@@ -52,16 +57,38 @@ const Home = () => {
         });
         console.log(catchesArray);
 
-        let componentArray = [];
-        for (let item of catchesArray) {
-          componentArray.push(
-            <PokemonCard number={item.number} dateCaught={item.caughtAt} />
-          );
-        }
-        setCardsToRender(componentArray);
+        let firstSixComponents = [];
+        let additionalComponents = [];
 
-        // // individual data fetching
-        // getDetails(catchesArray[0].number);
+        for (let i = 0; i < catchesArray.length; i++) {
+          if (i === 0) {
+            firstSixComponents.push(
+              <PokemonCard
+                number={catchesArray[i].number}
+                dateCaught={catchesArray[i].caughtAt}
+                first={true}
+              />
+            );
+          } else if (i < 1) {
+            firstSixComponents.push(
+              <PokemonCard
+                number={catchesArray[i].number}
+                dateCaught={catchesArray[i].caughtAt}
+                first={false}
+              />
+            );
+          } else {
+            additionalComponents.push(
+              <PokemonCard
+                number={catchesArray[i].number}
+                dateCaught={catchesArray[i].caughtAt}
+                first={false}
+              />
+            );
+          }
+        }
+        setInitialCards(firstSixComponents);
+        setAdditionalCards(additionalComponents);
       } catch (error) {
         console.log('There has been an error: ', error);
       }
@@ -74,10 +101,15 @@ const Home = () => {
     <>
       <h1>Home</h1>
       {currentUser && <p>currentuser email: {currentUser.uid}</p>}
-      {cardsToRender &&
-        cardsToRender.map((Component, key) => <div key={key}>{Component}</div>)}
+      {initialCards &&
+        initialCards.map((Component, key) => <div key={key}>{Component}</div>)}
 
-      <Link to="/profile">visit profile</Link>
+      {renderAdditional &&
+        additionalCards &&
+        additionalCards.map((Component, key) => (
+          <div key={key}>{Component}</div>
+        ))}
+      <button onClick={loadAdditionalCards}> load more </button>
     </>
   );
 };

@@ -4,12 +4,18 @@ import axios from 'axios';
 import app from '../utils/Firebase';
 import firebase from 'firebase';
 import { AuthContext } from '../contexts/AuthContext';
+import CatchButton from './DexEntryElements/CatchButton';
+import Name from './DexEntryElements/Name';
+import Type from './DexEntryElements/Type';
 
 function DexEntry() {
   // Firestore query states
-  const [caughtList, setCaughtList] = useState();
-  const [pokemonImage, setPokemonImage] = useState();
-  const [isCaught, setIsCaught] = useState();
+  const [caughtList, setCaughtList] = useState({});
+  const [pokemonImage, setPokemonImage] = useState('');
+  const [isCaught, setIsCaught] = useState(false);
+  const [apiData, setAPIData] = useState(null);
+  const [firstType, setFirstType] = useState('');
+  const [secondType, setSecondType] = useState('');
 
   // getting the route's parameter
   // routeID for getting the pictures out of public
@@ -42,38 +48,31 @@ function DexEntry() {
     }
   };
 
-  // function to change the caught value of this route's pokemon in firestore
-  const catchPokemon = async () => {
-    let listReference = caughtList;
-    if (isCaught === false) {
-      listReference[id].caught = true;
-      listReference[id].caughtAt = firebase.firestore.Timestamp.now();
+  const getPokemonImage = async () => {
+    const url = await app
+      .storage()
+      .ref()
+      .child(`pokemonImages/${routeID}.png`)
+      .getDownloadURL();
+
+    setPokemonImage(url);
+  };
+
+  const getDetails = async () => {
+    const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
+    setAPIData(response.data);
+    if (response.data.types.length === 1) {
+      setFirstType(response.data.types[0].type.name);
     } else {
-      listReference[id].caught = false;
+      setFirstType(response.data.types[0].type.name);
+      setSecondType(response.data.types[1].type.name);
     }
-
-    const db = app.firestore();
-    await db.collection('caughtPokemon').doc(currentUser.uid).set({
-      uid: currentUser.uid,
-      caughtPokemonList: listReference,
-    });
-
-    fetchFirestoreData();
   };
 
   useEffect(() => {
-    const getPokemonImage = async () => {
-      const url = await app
-        .storage()
-        .ref()
-        .child(`pokemonImages/${routeID}.png`)
-        .getDownloadURL();
-
-      setPokemonImage(url);
-    };
-
     getPokemonImage();
     fetchFirestoreData();
+    getDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser.uid, id, routeID]);
 
@@ -87,15 +86,28 @@ function DexEntry() {
 
   return (
     <div>
-      <p>This will be pokemon number: {id}</p>
-      {isCaught == true ? <p>CAUGHT</p> : <p>NOT CAUGHT</p>}
+      {apiData && (
+        <Name pokemonName={apiData.forms[0].name} number={routeID}>
+          This will be pokemon number: {id}
+        </Name>
+      )}
+
+      {isCaught === true ? <p>CAUGHT</p> : <p>NOT CAUGHT</p>}
+      {firstType && <Type type={firstType} />}
+      {secondType && <Type type={secondType} />}
 
       <img
         src={pokemonImage}
         // src={process.env.PUBLIC_URL + `/images/${routeID}.png`}
         alt={`Pokemon Number: ${id}`}
       />
-      <button onClick={catchPokemon}> Catch this pokemon</button>
+      <CatchButton
+        isCaught={isCaught}
+        setIsCaught={setIsCaught}
+        caughtList={caughtList}
+        fetchFirestoreData={fetchFirestoreData}
+        id={id}
+      />
     </div>
   );
 }
