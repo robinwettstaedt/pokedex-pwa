@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import { ThemeChangeContext } from '../../contexts/ThemeChangeContext';
 import app from '../../utils/Firebase';
+import Search from './Search';
 
 function Nav() {
   const [userImageURL, setUserImageURL] = useState();
@@ -43,6 +44,7 @@ function Nav() {
       <Link to="/profile">Profile </Link>
       <Link to="/pokedex">Pokedex </Link>
       <button onClick={() => changeTheme()}>Change Theme</button>
+      <Search />
     </div>
   );
 }

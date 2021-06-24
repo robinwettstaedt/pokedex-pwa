@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import app from '../utils/Firebase';
-import { useQuery } from 'react-query';
 import Spinner from './Spinner/Spinner';
 
 const PokemonCard = ({ number, dateCaught, first }) => {
