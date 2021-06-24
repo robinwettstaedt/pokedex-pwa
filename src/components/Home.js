@@ -55,7 +55,6 @@ const Home = () => {
         catchesArray.sort((a, b) => {
           return b.caughtAt.toDate() - a.caughtAt.toDate();
         });
-        console.log(catchesArray);
 
         let firstSixComponents = [];
         let additionalComponents = [];

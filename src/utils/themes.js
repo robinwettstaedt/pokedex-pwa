@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 export const darkTheme = {
   primaryBackgroundColor: '#242632',
   primaryFontColor: '#fff',
+  primaryBorderRadius: '20px',
   electric: '#F9C13E',
   grass: '#85BF79',
   poison: '#8F30C9',
@@ -26,6 +27,7 @@ export const darkTheme = {
 export const lightTheme = {
   primaryBackgroundColor: '#fff',
   primaryFontColor: '#5a5a5a',
+  primaryBorderRadius: '20px',
   electric: '#F9C13E',
   grass: '#85BF79',
   poison: '#8F30C9',
@@ -48,6 +50,7 @@ export const lightTheme = {
 
 export const GlobalStyles = createGlobalStyle`
   *{
+     font-family: 'Inter', sans-serif;
      box-sizing: border-box;
      margin: 0;
      padding: 0;

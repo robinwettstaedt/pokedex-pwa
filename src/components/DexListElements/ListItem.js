@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom';
 import { SearchContext } from '../../contexts/SearchContext';
 
 const ListItem = ({ number, index, caught }) => {
-  const { searching, setSearching, searchValue, setSearchValue } =
-    useContext(SearchContext);
+  const { searching, searchValue } = useContext(SearchContext);
 
   const [activelySearching, setActivelySearching] = useState(false);
 
@@ -16,37 +15,7 @@ const ListItem = ({ number, index, caught }) => {
       setActivelySearching(false);
     }
   }, [searching, searchValue, setActivelySearching]);
-  //   if (
-  //     activelySearching &&
-  //     namesArray[index - 1].toLowerCase().includes(searchValue)
-  //   ) {
-  //     return (
-  //       <div>
-  //         <li key={number}>
-  //           {caught ? (
-  //             <img
-  //               height={20}
-  //               src={process.env.PUBLIC_URL + `/icons/pokeball-grey.png`}
-  //               alt={`Pokemon Number: ${number}`}
-  //             />
-  //           ) : (
-  //             <img
-  //               height={20}
-  //               src={process.env.PUBLIC_URL + `/icons/pokeball-white.png`}
-  //               alt={`Pokemon Number: ${number}`}
-  //             />
-  //           )}
-  //           <Link to={`/pokedex/${index}`}>
-  //             #{number} {namesArray[index - 1]}
-  //           </Link>
-  //           <img
-  //             src={process.env.PUBLIC_URL + `/sprites/${number}MS.png`}
-  //             alt={`Pokemon Number: ${number}`}
-  //           />
-  //         </li>
-  //       </div>
-  //     );
-  //   }
+
   if (
     activelySearching &&
     !namesArray[index - 1].toLowerCase().includes(searchValue)

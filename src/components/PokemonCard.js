@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import app from '../utils/Firebase';
-import Spinner from './Spinner/Spinner';
 
 const PokemonCard = ({ number, dateCaught, first }) => {
   const [firstType, setFirstType] = useState('');
@@ -21,7 +20,6 @@ const PokemonCard = ({ number, dateCaught, first }) => {
     const response = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${number}`
     );
-    console.log(response.data.forms[0].name);
     if (response.data.types.length === 1) {
       setFirstType(response.data.types[0].type.name);
     } else {
@@ -51,12 +49,12 @@ const PokemonCard = ({ number, dateCaught, first }) => {
       {first ? <p>Latest catch</p> : <p>Previous Catch</p>}
       {firstType && <p>{firstType}</p>}
       {secondType && <p>{secondType}</p>}
-      <img
+      {/* <img
         width={20}
         src={pokemonImage}
         // src={process.env.PUBLIC_URL + `/images/${routeID}.png`}
         alt={`Pokemon Number: ${pictureID}`}
-      />
+      /> */}
       <p>number: #{pictureID}</p>
       <p>
         I was caught at:
