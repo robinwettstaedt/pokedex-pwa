@@ -1,30 +1,30 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import styled from 'styled-components';
 import { SearchContext } from '../../contexts/SearchContext';
+import SearchButton from './SearchButton';
+import SearchBar from './SearchBar';
+
+const Wrapper = styled.div`
+  /* color: ${(props) => props.theme.primaryFontColor}; */
+  background: ${(props) => props.theme.primaryBackgroundColor};
+
+  width: 100%;
+  height: 40px;
+  padding: 0 2rem 0 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
 
 function Search() {
-  const { searching, setSearching, searchValue, setSearchValue } =
-    useContext(SearchContext);
-
-  const handleTextInput = (e) => {
-    setSearchValue(e.target.value.toLowerCase());
-  };
+  const { searching } = useContext(SearchContext);
 
   return (
-    <div>
-      {!searching && (
-        <button onClick={() => setSearching(true)}>
-          <Link to="/pokedex">Start searching</Link>
-        </button>
-      )}
-      {searching && (
-        <button onClick={() => setSearching(false)}>end searching</button>
-      )}
-
-      {searching && (
-        <input type="text" value={searchValue} onChange={handleTextInput} />
-      )}
-    </div>
+    <Wrapper>
+      {searching && <SearchBar />}
+      <SearchButton />
+    </Wrapper>
   );
 }
 
