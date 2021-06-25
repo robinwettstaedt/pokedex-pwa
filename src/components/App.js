@@ -20,7 +20,8 @@ const App = () => {
   const { theme } = useContext(ThemeChangeContext);
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
-      <GlobalStyles />
+      <GlobalStyles theme={theme} />
+
       <Router>
         <div>
           <PrivateRoute path="/" component={Nav} />

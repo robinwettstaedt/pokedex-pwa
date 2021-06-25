@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { ThemeChangeContext } from '../../../contexts/ThemeChangeContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
-import { SearchContext } from '../../contexts/SearchContext';
+import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
 const Wrapper = styled.div`
-  /* color: ${(props) => props.theme.primaryFontColor}; */
+  color: ${(props) => props.theme.primaryFontColor};
   background: ${(props) => props.theme.primaryBackgroundColor};
 
   width: 30px;
@@ -15,33 +13,25 @@ const Wrapper = styled.div`
 
   display: flex;
   align-items: center;
+  justify-content: center;
 `;
 
-const ListOpener = styled(Link)`
-  color: ${(props) => props.theme.primaryFontColor};
-  width: 30px;
-  text-decoration: none;
-  margin-left: 1rem;
-`;
+function ThemeChanger() {
+  const { theme, setTheme } = useContext(ThemeChangeContext);
 
-function SearchButton() {
-  const { searching, setSearching } = useContext(SearchContext);
-
-  const handleClick = () => {
-    setSearching(!searching);
+  const changeTheme = () => {
+    theme === 'dark' ? setTheme('light') : setTheme('dark');
   };
 
   return (
-    <Wrapper>
-      <ListOpener to="/pokedex" onClick={handleClick}>
-        {searching ? (
-          <FontAwesomeIcon icon={faTimesCircle} size="2x" />
-        ) : (
-          <FontAwesomeIcon icon={faSearch} size="2x" />
-        )}
-      </ListOpener>
+    <Wrapper onClick={changeTheme}>
+      {theme === 'dark' ? (
+        <FontAwesomeIcon icon={faSun} size="2x" />
+      ) : (
+        <FontAwesomeIcon icon={faMoon} size="2x" />
+      )}
     </Wrapper>
   );
 }
 
-export default SearchButton;
+export default ThemeChanger;

@@ -2,8 +2,12 @@ import { createGlobalStyle } from 'styled-components';
 
 export const darkTheme = {
   primaryBackgroundColor: '#242632',
+  primaryCardBackgroundColor: '#242632',
   primaryFontColor: '#fff',
+  secondaryFontColor: 'rgba(255, 255, 255, 0.5)',
+  primaryBorderValue: '1px solid rgba(255, 255, 255, 0.2)',
   primaryBorderRadius: '20px',
+  primaryBoxShadowValue: '0px 0px 10px rgba(0, 0, 0, 0.5)',
   electric: '#F9C13E',
   grass: '#85BF79',
   poison: '#8F30C9',
@@ -25,9 +29,13 @@ export const darkTheme = {
 };
 
 export const lightTheme = {
-  primaryBackgroundColor: '#fff',
+  primaryBackgroundColor: '#E5E5E5',
+  primaryCardBackgroundColor: '#fff',
   primaryFontColor: '#5a5a5a',
+  secondaryFontColor: 'rgba(90, 90, 90, 0.5)',
+  primaryBorderValue: 'none',
   primaryBorderRadius: '20px',
+  primaryBoxShadowValue: 'none',
   electric: '#F9C13E',
   grass: '#85BF79',
   poison: '#8F30C9',
@@ -54,6 +62,10 @@ export const GlobalStyles = createGlobalStyle`
      box-sizing: border-box;
      margin: 0;
      padding: 0;
+   }
+   body {
+     background-color: ${(props) =>
+       props.theme === 'dark' ? '#242632' : '#E5E5E5'};
    }
 
 `;
