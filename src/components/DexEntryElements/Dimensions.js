@@ -24,7 +24,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
   }
 `;
-
+// git sunday update
 function Name({ height, weight }) {
   return (
     <>
