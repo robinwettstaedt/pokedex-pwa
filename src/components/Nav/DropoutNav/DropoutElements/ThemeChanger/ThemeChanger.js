@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import { ThemeChangeContext } from '../../../contexts/ThemeChangeContext';
+import { ThemeChangeContext } from '../../../../../contexts/ThemeChangeContext';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
 
@@ -26,9 +26,9 @@ function ThemeChanger() {
   return (
     <Wrapper onClick={changeTheme}>
       {theme === 'dark' ? (
-        <FontAwesomeIcon icon={faSun} size="2x" />
+        <FontAwesomeIcon icon={faSun} size="3x" />
       ) : (
-        <FontAwesomeIcon icon={faMoon} size="2x" />
+        <FontAwesomeIcon icon={faMoon} size="3x" />
       )}
     </Wrapper>
   );

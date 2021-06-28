@@ -1,32 +1,48 @@
 import React from 'react';
 import styled from 'styled-components';
-import ThemeChanger from './ThemeChanger';
+import ThemeChanger from './DropoutElements/ThemeChanger/ThemeChanger';
+import SignOut from './DropoutElements/SignOut/SignOut';
 
 const Wrapper = styled.div`
   color: ${(props) => props.theme.primaryFontColor};
   background: ${(props) => props.theme.primaryBackgroundColor};
 
   position: absolute;
-  width: 20%;
+  width: 60%;
   height: 90%;
-  padding: 1rem;
   top: 60px;
-  left: 80%;
+  left: 70%;
+  position: fixed;
 
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   border-radius: ${(props) => props.theme.primaryBorderRadius};
   border: ${(props) => props.theme.primaryBorderValue};
   box-shadow: ${(props) => props.theme.boxShadow};
 `;
 
+const Spacer = styled.div`
+  width: 50%;
+  height: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+`;
+
 const Dropout = ({ isOpen }) => {
   if (isOpen) {
     return (
       <Wrapper>
-        <ThemeChanger />
+        <Spacer>
+          <ThemeChanger />
+          <SignOut />
+        </Spacer>
+        <Spacer />
       </Wrapper>
     );
   } else {

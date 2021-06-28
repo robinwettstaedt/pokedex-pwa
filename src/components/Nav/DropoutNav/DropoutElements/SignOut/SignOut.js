@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
-import app from '../../../utils/Firebase';
+import app from '../../../../../utils/Firebase';
 
 const Wrapper = styled.div`
   /* color: ${(props) => props.theme.primaryFontColor}; */
@@ -23,7 +23,7 @@ function SignOut() {
 
   return (
     <Wrapper>
-      <FontAwesomeIcon icon={faSignOutAlt} size="2x" onClick={handleClick} />
+      <FontAwesomeIcon icon={faSignOutAlt} size="3x" onClick={handleClick} />
     </Wrapper>
   );
 }

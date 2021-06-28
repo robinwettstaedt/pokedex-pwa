@@ -3,13 +3,13 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import app from '../../utils/Firebase';
 import { AuthContext } from '../../contexts/AuthContext';
-import CatchButton from './DexEntryElements/CatchButton';
-import Name from './DexEntryElements/Name';
-import Stats from './DexEntryElements/Stats';
-import { Wrapper } from './DexEntryElements/Wrapper';
-import Dimensions from './DexEntryElements/Dimensions';
-import Abilities from './DexEntryElements/Abilities';
-import Types from './DexEntryElements/Types';
+import CatchButton from './DexEntryElements/CatchButton/CatchButton';
+import Name from './DexEntryElements/Name/Name';
+import Stats from './DexEntryElements/Stats/Stats';
+import { Wrapper } from './styles/styles';
+import Dimensions from './DexEntryElements/Dimensions/Dimensions';
+import Abilities from './DexEntryElements/Abilities/Abilities';
+import Types from './DexEntryElements/Types/Types';
 
 function DexEntry() {
   // Firestore query states
@@ -88,24 +88,26 @@ function DexEntry() {
   // }
   if (apiData) {
     return (
-      <Wrapper>
-        <Name
-          pokemonName={apiData.forms[0].name}
-          number={routeID}
-          isCaught={isCaught}
-        />
-        {firstType && !secondType && <Types firstType={firstType} />}
-        {firstType && secondType && (
-          <Types firstType={firstType} secondType={secondType} />
-        )}
+      <>
+        <Wrapper>
+          <Name
+            pokemonName={apiData.forms[0].name}
+            number={routeID}
+            isCaught={isCaught}
+          />
+          {firstType && !secondType && <Types firstType={firstType} />}
+          {firstType && secondType && (
+            <Types firstType={firstType} secondType={secondType} />
+          )}
 
-        {/* {firstType && <Type type={firstType} />}
+          {/* {firstType && <Type type={firstType} />}
         {secondType && <Type type={secondType} />} */}
 
-        {/* <img src={pokemonImage} alt={`Pokemon Number: ${id}`} /> */}
-        <Stats stats={apiData.stats} />
-        <Dimensions height={apiData.height} weight={apiData.weight} />
-        <Abilities abilities={apiData.abilities} />
+          {/* <img src={pokemonImage} alt={`Pokemon Number: ${id}`} /> */}
+          <Stats stats={apiData.stats} />
+          <Dimensions height={apiData.height} weight={apiData.weight} />
+          <Abilities abilities={apiData.abilities} />
+        </Wrapper>
         <CatchButton
           isCaught={isCaught}
           setIsCaught={setIsCaught}
@@ -113,7 +115,7 @@ function DexEntry() {
           fetchFirestoreData={fetchFirestoreData}
           id={id}
         />
-      </Wrapper>
+      </>
     );
   } else {
     return null;

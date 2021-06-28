@@ -1,7 +1,6 @@
-import React from 'react';
 import styled from 'styled-components';
 
-const TypeButton = styled.div`
+export const TypeButton = styled.div`
   color: white;
   background: ${(props) => props.theme[props.type]};
 
@@ -15,15 +14,3 @@ const TypeButton = styled.div`
   justify-content: center;
   align-items: center;
 `;
-
-function Type({ type }) {
-  return (
-    <>
-      <TypeButton type={type}>
-        {type.charAt(0).toUpperCase() + type.slice(1)}
-      </TypeButton>
-    </>
-  );
-}
-
-export default Type;

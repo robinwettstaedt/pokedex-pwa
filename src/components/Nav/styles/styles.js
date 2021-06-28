@@ -8,6 +8,7 @@ export const NavWrapper = styled.div`
   width: 100vw;
   height: 60px;
   padding: 1rem;
+  position: fixed;
 
   display: flex;
   justify-content: space-between;
