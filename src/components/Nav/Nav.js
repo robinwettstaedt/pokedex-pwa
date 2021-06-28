@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import Search from './Search';
+import Search from './NavElements/Search/Search';
 import Dropout from './DropoutNav/Dropout';
-import MenuButton from './MenuButton';
-import Avatar from './Avatar';
-import { NavWrapper, RightWrapper } from './styles/NavElements';
+import MenuButton from './NavElements/MenuButton';
+import Avatar from './NavElements/Avatar';
+import { NavWrapper, RightWrapper } from './styles/styles';
 
 function Nav() {
   const [dropoutOpen, setDropoutOpen] = useState(false);

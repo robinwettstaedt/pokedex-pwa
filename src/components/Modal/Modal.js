@@ -1,5 +1,5 @@
 import React from 'react';
-import { ModalContainer } from './ModalElements';
+import { ModalContainer } from './styles/ModalElements';
 
 const Modal = ({ showModal, setShowModal, modalContent }) => {
   return (

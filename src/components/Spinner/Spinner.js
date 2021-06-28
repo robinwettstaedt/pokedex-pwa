@@ -1,7 +1,7 @@
+import React from 'react';
 import { css } from '@emotion/react';
 import RingLoader from 'react-spinners/ClipLoader';
-import React from 'react';
-import SpinnerWrapper from './SpinnerWrapper';
+import SpinnerWrapper from './styles/SpinnerWrapper';
 
 function Spinner() {
   const override = css``;
