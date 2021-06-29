@@ -35,7 +35,7 @@ function Profile() {
 
   return (
     <div>
-      <p> This is the profile of {currentUser.displayName}</p>
+      <p> This is the profile of {currentUser.email}</p>
       <p>You have caught {count} / 151 Pokemon</p>
       <Link to="/profile/delete">Delete your Account</Link>
       <br />

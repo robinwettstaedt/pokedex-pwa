@@ -6,14 +6,20 @@ export const NavWrapper = styled.div`
   background: ${(props) => props.theme.primaryBackgroundColor};
 
   width: 100vw;
-  height: 60px;
+  height: 10vh;
   padding: 1rem;
   position: fixed;
+  z-index: 1;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+`;
+
+export const PlaceholderNav = styled.div`
+  width: 100vw;
+  height: 10vh;
 `;
 
 export const RightWrapper = styled.div`

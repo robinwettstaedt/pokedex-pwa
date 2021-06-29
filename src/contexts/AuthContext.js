@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import app from '../utils/Firebase';
-import Spinner from '../components/Spinner/Spinner';
 
 export const AuthContext = React.createContext();
 
@@ -14,10 +13,6 @@ export const AuthProvider = ({ children }) => {
       setPending(false);
     });
   }, []);
-
-  if (pending) {
-    return <Spinner />;
-  }
 
   return (
     <AuthContext.Provider

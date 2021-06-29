@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
-import Spinner from '../Spinner/Spinner';
 
 const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
   const { currentUser, pending } = useContext(AuthContext);
@@ -10,7 +9,7 @@ const PrivateRoute = ({ component: RouteComponent, ...rest }) => {
       {...rest}
       render={(routeProps) =>
         pending ? (
-          <Spinner />
+          <p>is loading...</p>
         ) : currentUser ? (
           <RouteComponent {...routeProps} />
         ) : (
