@@ -6,15 +6,16 @@ import { AuthContext } from '../../contexts/AuthContext';
 import CatchButton from './DexEntryElements/CatchButton/CatchButton';
 import Name from './DexEntryElements/Name/Name';
 import Stats from './DexEntryElements/Stats/Stats';
-import { Wrapper } from './styles/styles';
+import { Wrapper, GridWrapper, BottomSpacer, SpacerDot } from './styles/styles';
 import Dimensions from './DexEntryElements/Dimensions/Dimensions';
 import Abilities from './DexEntryElements/Abilities/Abilities';
 import Types from './DexEntryElements/Types/Types';
+import Image from './DexEntryElements/PokemonImage/Image';
 
 function DexEntry() {
   // Firestore query states
   const [caughtList, setCaughtList] = useState({});
-  const [pokemonImage, setPokemonImage] = useState('');
+
   const [isCaught, setIsCaught] = useState(false);
   const [apiData, setAPIData] = useState(null);
   const [firstType, setFirstType] = useState('');
@@ -51,16 +52,6 @@ function DexEntry() {
     }
   };
 
-  const getPokemonImage = async () => {
-    const url = await app
-      .storage()
-      .ref()
-      .child(`pokemonImages/${routeID}.png`)
-      .getDownloadURL();
-
-    setPokemonImage(url);
-  };
-
   const getDetails = async () => {
     const response = await axios.get(`https://pokeapi.co/api/v2/pokemon/${id}`);
     setAPIData(response.data);
@@ -73,40 +64,34 @@ function DexEntry() {
   };
 
   useEffect(() => {
-    getPokemonImage();
     fetchFirestoreData();
     getDetails();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentUser.uid, id, routeID]);
 
-  // // for api queries
-  // if (isLoading) {
-  //   return <h1>is Loading....</h1>;
-  // }
-  // if (isError) {
-  //   return <h1>Errrrrooorrr</h1>;
-  // }
   if (apiData) {
     return (
       <>
         <Wrapper>
-          <Name
-            pokemonName={apiData.forms[0].name}
-            number={routeID}
-            isCaught={isCaught}
-          />
-          {firstType && !secondType && <Types firstType={firstType} />}
-          {firstType && secondType && (
-            <Types firstType={firstType} secondType={secondType} />
-          )}
+          <GridWrapper>
+            <Name
+              pokemonName={apiData.forms[0].name}
+              number={routeID}
+              isCaught={isCaught}
+            />
+            {firstType && !secondType && <Types firstType={firstType} />}
+            {firstType && secondType && (
+              <Types firstType={firstType} secondType={secondType} />
+            )}
+            <Image routeID={routeID} />
 
-          {/* {firstType && <Type type={firstType} />}
-        {secondType && <Type type={secondType} />} */}
-
-          {/* <img src={pokemonImage} alt={`Pokemon Number: ${id}`} /> */}
-          <Stats stats={apiData.stats} />
-          <Dimensions height={apiData.height} weight={apiData.weight} />
-          <Abilities abilities={apiData.abilities} />
+            <Stats stats={apiData.stats} />
+            <Dimensions height={apiData.height} weight={apiData.weight} />
+            <Abilities abilities={apiData.abilities} />
+            <BottomSpacer>
+              <SpacerDot />
+            </BottomSpacer>
+          </GridWrapper>
         </Wrapper>
         <CatchButton
           isCaught={isCaught}

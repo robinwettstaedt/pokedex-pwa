@@ -6,7 +6,7 @@ export const BallWrapper = styled(motion.div)`
   width: 70px;
   height: 70px;
 
-  position: absolute;
+  position: fixed;
   left: 1rem;
   bottom: 1rem;
 `;

@@ -22,7 +22,7 @@ export const Wrapper = styled.div`
 export const Spacer = styled.div`
   width: 50%;
   height: 100%;
-  padding: 2rem;
+  padding: 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;

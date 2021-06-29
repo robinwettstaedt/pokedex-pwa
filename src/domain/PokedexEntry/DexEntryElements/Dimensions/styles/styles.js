@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   color: ${(props) => props.theme.primaryFontColor};
-  background: ${(props) => props.theme.primaryBackgroundColor};
+  background: ${(props) => props.theme.primaryCardBackgroundColor};
 
   width: 95vw;
   height: 120px;
@@ -13,8 +13,8 @@ export const Wrapper = styled.div`
   justify-content: space-evenly;
 
   border-radius: ${(props) => props.theme.primaryBorderRadius};
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  border: ${(props) => props.theme.primaryBorderValue};
+  box-shadow: ${(props) => props.theme.primaryBoxShadowValue};
   .height,
   .weight {
     font-weight: medium;
