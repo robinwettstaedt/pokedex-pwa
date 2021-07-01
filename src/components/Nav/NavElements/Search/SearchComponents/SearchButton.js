@@ -19,13 +19,7 @@ const SearchButton = () => {
   return (
     <SearchButtonWrapper>
       {searching ? (
-        <CrossWrapper>
-          <FontAwesomeIcon
-            onClick={handleClick}
-            icon={faTimesCircle}
-            size="2x"
-          />
-        </CrossWrapper>
+        <FontAwesomeIcon onClick={handleClick} icon={faTimesCircle} size="2x" />
       ) : (
         <GlassWrapper to="/pokedex">
           <FontAwesomeIcon onClick={handleClick} icon={faSearch} size="2x" />

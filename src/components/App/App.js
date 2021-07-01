@@ -21,7 +21,6 @@ const App = () => {
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyles theme={theme} />
-
       <Router>
         <div>
           <PrivateRoute path="/" component={Nav} />

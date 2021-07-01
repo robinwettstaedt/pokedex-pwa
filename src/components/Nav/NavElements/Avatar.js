@@ -28,10 +28,10 @@ function Avatar() {
   }, [currentUser.photoURL, currentUser]);
 
   return (
-    <AvatarWrapper>
+    <>
       <AvatarImage src={userImageURL} alt="user" />
       <Username to="/profile">{currentUser.displayName}</Username>
-    </AvatarWrapper>
+    </>
   );
 }
 

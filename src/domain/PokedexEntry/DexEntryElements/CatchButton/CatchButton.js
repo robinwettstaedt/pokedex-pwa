@@ -68,7 +68,7 @@ const CatchButton = ({
           d="M100 50C100 63.2608 94.7322 75.9785 85.3553 85.3553C75.9785 94.7322 63.2608 100 50 100C36.7392 100 24.0215 94.7322 14.6447 85.3553C5.26785 75.9785 2.00233e-06 63.2608 0 50L50 50H100Z"
           fill="white"
           stroke="black"
-          stroke-width="4"
+          strokeWidth="4"
           mask="url(#path-1-inside-1)"
         />
         <mask id="path-2-inside-2" fill="white">
@@ -78,7 +78,7 @@ const CatchButton = ({
           d="M100 50C100 36.7392 94.7322 24.0215 85.3553 14.6447C75.9785 5.26784 63.2608 1.00116e-06 50 0C36.7392 -1.00116e-06 24.0215 5.26784 14.6447 14.6447C5.26785 24.0215 2.00233e-06 36.7392 0 50L50 50H100Z"
           fill={isCaught ? '#D04D4D' : 'white'}
           stroke="black"
-          stroke-width="4"
+          strokeWidth="4"
           mask="url(#path-2-inside-2)"
         />
         <rect y="46" width="100" height="8.5" rx="1" fill="black" />

@@ -12,7 +12,7 @@ import Abilities from './DexEntryElements/Abilities/Abilities';
 import Types from './DexEntryElements/Types/Types';
 import Image from './DexEntryElements/PokemonImage/Image';
 
-function DexEntry() {
+const DexEntry = () => {
   // Firestore query states
   const [caughtList, setCaughtList] = useState({});
 
@@ -105,6 +105,6 @@ function DexEntry() {
   } else {
     return null;
   }
-}
+};
 
 export default DexEntry;

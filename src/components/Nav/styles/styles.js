@@ -7,7 +7,7 @@ export const NavWrapper = styled.div`
 
   width: 100vw;
   height: 10vh;
-  padding: 1rem;
+  padding: 0 1rem;
   position: fixed;
   z-index: 1;
 
@@ -15,6 +15,14 @@ export const NavWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   overflow: hidden;
+
+  @media only screen and (min-width: 768px) {
+    padding: 0 1.5rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    padding: 0 2rem;
+  }
 `;
 
 export const PlaceholderNav = styled.div`
@@ -24,10 +32,17 @@ export const PlaceholderNav = styled.div`
 
 export const RightWrapper = styled.div`
   width: 85%;
-  height: 30px;
 
   display: flex;
   justify-content: flex-end;
   align-items: center;
   overflow: hidden;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 2rem;
+  }
 `;
