@@ -6,10 +6,19 @@ export const Wrapper = styled.div`
 
   width: 30px;
   height: 30px;
+  font-size: 1rem;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 1.7rem;
+  }
 `;
 
 export const LinkWrapper = styled(Link)`
@@ -22,6 +31,14 @@ export const LinkWrapper = styled(Link)`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 1.7rem;
+  }
 `;
 
 export const ExternalLinkWrapper = styled.div`
@@ -33,6 +50,14 @@ export const ExternalLinkWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 1.7rem;
+  }
 `;
 
 export const StyledAnchorTag = styled.a`

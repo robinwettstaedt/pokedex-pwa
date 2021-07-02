@@ -88,10 +88,10 @@ const DexEntry = () => {
             <Stats stats={apiData.stats} />
             <Dimensions height={apiData.height} weight={apiData.weight} />
             <Abilities abilities={apiData.abilities} />
-            <BottomSpacer>
-              <SpacerDot />
-            </BottomSpacer>
           </GridWrapper>
+          <BottomSpacer>
+            <SpacerDot />
+          </BottomSpacer>
         </Wrapper>
         <CatchButton
           isCaught={isCaught}

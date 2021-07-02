@@ -5,14 +5,14 @@ export const Wrapper = styled.div`
   width: 100vw;
   display: flex;
   align-items: center;
-  padding: 1rem;
+  padding: 1rem ${(props) => props.theme.outsideMobilePaddingLeftRight};
 
   @media only screen and (min-width: 768px) {
-    padding: 1.2rem;
+    padding: 1rem ${(props) => props.theme.outsideTabletPaddingLeftRight};
   }
 
   @media only screen and (min-width: 1024px) {
-    padding: 1.6rem;
+    padding: 1rem ${(props) => props.theme.outsideDesktopPaddingLeftRight};
   }
 `;
 

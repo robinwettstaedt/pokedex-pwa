@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   color: ${(props) => props.theme.primaryFontColor};
   background: ${(props) => props.theme.primaryCardBackgroundColor};
 
-  width: 95vw;
   height: 120px;
   padding: 1rem;
 
@@ -21,5 +20,23 @@ export const Wrapper = styled.div`
     font-size: 1.5rem;
     display: flex;
     justify-content: space-between;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 2rem;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      font-size: 3rem;
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding: 1rem 1.5rem;
+    height: 18vh;
+    border-radius: ${(props) => props.theme.tabletBorderRadius};
+  }
+
+  @media only screen and (min-width: 1024px) {
+    padding: 2rem;
   }
 `;

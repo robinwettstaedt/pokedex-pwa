@@ -4,9 +4,8 @@ export const ImageWrapper = styled.div`
   color: ${(props) => props.theme.primaryFontColor};
   background: ${(props) => props.theme.primaryCardBackgroundColor};
 
-  width: 95vw;
   height: 95vw;
-  padding: 1rem;
+  /* padding: 1rem; */
 
   display: flex;
   justify-content: center;
@@ -14,10 +13,14 @@ export const ImageWrapper = styled.div`
 
   border-radius: ${(props) => props.theme.primaryBorderRadius};
   border: ${(props) => props.theme.primaryBorderValue};
-  box-shadow: ${(props) => props.theme.primaryBoxShadowValue}; ;
+  box-shadow: ${(props) => props.theme.primaryBoxShadowValue};
+
+  @media only screen and (min-width: 768px) {
+    height: 47.5vw;
+  }
 `;
 
 export const PokemonImage = styled.img`
-  width: 90%;
-  height: 90%;
+  width: 85%;
+  height: 85%;
 `;

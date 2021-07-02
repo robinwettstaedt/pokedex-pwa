@@ -22,6 +22,7 @@ export const Username = styled(Link)`
   padding-left: 0.5rem;
   text-decoration: none;
   font-size: 1.2rem;
+  font-weight: 600;
 
   @media only screen and (min-width: 768px) {
     font-size: 1.8rem;

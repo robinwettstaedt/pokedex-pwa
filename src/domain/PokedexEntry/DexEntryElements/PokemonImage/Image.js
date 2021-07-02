@@ -20,11 +20,11 @@ const Image = ({ routeID }) => {
   }, [routeID]);
 
   return (
-    <div>
+    <>
       <ImageWrapper>
         <PokemonImage src={pokemonImage} alt={`Pokemon Number: ${routeID}`} />
       </ImageWrapper>
-    </div>
+    </>
   );
 };
 

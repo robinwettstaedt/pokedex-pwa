@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   color: ${(props) => props.theme.primaryFontColor};
   background: ${(props) => props.theme.primaryCardBackgroundColor};
 
-  width: 95vw;
   height: 120px;
   padding: 1rem;
 
@@ -18,10 +17,26 @@ export const Wrapper = styled.div`
   .heading {
     font-weight: medium;
     font-size: 1.5rem;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 2rem;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      font-size: 3rem;
+    }
   }
   .abilities {
     display: flex;
     justify-content: space-between;
+
+    @media only screen and (min-width: 768px) {
+      font-size: 1.5rem;
+    }
+
+    @media only screen and (min-width: 1024px) {
+      font-size: 2rem;
+    }
   }
   .ability-placeholder {
     margin: 0 2rem;
@@ -29,5 +44,15 @@ export const Wrapper = styled.div`
   }
   .hidden-ability {
     opacity: 0.6;
+  }
+
+  @media only screen and (min-width: 768px) {
+    padding: 1rem 1.5rem;
+    height: 18vh;
+    border-radius: ${(props) => props.theme.tabletBorderRadius};
+  }
+
+  @media only screen and (min-width: 1024px) {
+    padding: 2rem;
   }
 `;

@@ -1,5 +1,11 @@
 import React, { useContext } from 'react';
-import { Wrapper, NameTag, NumberTag } from './styles/styles';
+import {
+  Wrapper,
+  NameTag,
+  NumberTag,
+  IMG,
+  NameAndBallWrapper,
+} from './styles/styles';
 import { ThemeChangeContext } from '../../../../contexts/ThemeChangeContext';
 
 const Name = ({ pokemonName, number, isCaught }) => {
@@ -7,27 +13,25 @@ const Name = ({ pokemonName, number, isCaught }) => {
   return (
     <>
       <Wrapper>
-        <div>
+        <NameAndBallWrapper>
           <NameTag className="name">
             {pokemonName.charAt(0).toUpperCase() + pokemonName.slice(1)}
           </NameTag>
 
           {isCaught && theme === 'dark' && (
-            <img
-              height={20}
+            <IMG
               src={process.env.PUBLIC_URL + `/icons/pokeball-white.png`}
               alt={`Pokemon Number: ${number}`}
             />
           )}
 
           {isCaught && theme === 'light' && (
-            <img
-              height={20}
+            <IMG
               src={process.env.PUBLIC_URL + `/icons/pokeball-grey.png`}
               alt={`Pokemon Number: ${number}`}
             />
           )}
-        </div>
+        </NameAndBallWrapper>
         <NumberTag className="number">#{number}</NumberTag>
       </Wrapper>
     </>

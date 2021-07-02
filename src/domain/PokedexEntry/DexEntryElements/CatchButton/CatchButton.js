@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../contexts/AuthContext';
 import app from '../../../../utils/Firebase';
 import firebase from 'firebase';
-import { BallWrapper } from './styles/styles';
+import { BallWrapper, SVG } from './styles/styles';
 
 const CatchButton = ({
   isCaught,
@@ -54,9 +54,9 @@ const CatchButton = ({
         damping: 20,
       }}
     >
-      <svg
-        width="70"
-        height="70"
+      <SVG
+        // width="70"
+        // height="70"
         viewBox="0 0 100 100"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +84,7 @@ const CatchButton = ({
         <rect y="46" width="100" height="8.5" rx="1" fill="black" />
         <circle cx="49.75" cy="50.25" r="16.25" fill="black" />
         <circle cx="49.75" cy="50.25" r="11.25" fill="white" />
-      </svg>
+      </SVG>
     </BallWrapper>
   );
 };

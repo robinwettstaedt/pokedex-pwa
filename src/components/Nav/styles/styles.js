@@ -7,7 +7,7 @@ export const NavWrapper = styled.div`
 
   width: 100vw;
   height: 10vh;
-  padding: 0 1rem;
+  padding: 0 ${(props) => props.theme.outsideMobilePaddingLeftRight};
   position: fixed;
   z-index: 1;
 
@@ -17,11 +17,11 @@ export const NavWrapper = styled.div`
   overflow: hidden;
 
   @media only screen and (min-width: 768px) {
-    padding: 0 1.5rem;
+    padding: 0 ${(props) => props.theme.outsideTabletPaddingLeftRight};
   }
 
   @media only screen and (min-width: 1024px) {
-    padding: 0 2rem;
+    padding: 0 ${(props) => props.theme.outsideDesktopPaddingLeftRight};
   }
 `;
 
