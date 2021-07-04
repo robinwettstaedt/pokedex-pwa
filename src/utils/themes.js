@@ -21,18 +21,26 @@ const types = {
   ice: '#70DDE4',
 };
 
+const borderConstants = {
+  primaryBorderRadius: '20px',
+  tabletBorderRadius: '30px',
+};
+
+const outsidePaddingLeftRight = {
+  outsideMobilePaddingLeftRight: '0.8rem',
+  outsideTabletPaddingLeftRight: '1.2rem',
+  outsideDesktopPaddingLeftRight: '1.6rem',
+};
+
 export const darkTheme = {
   primaryBackgroundColor: '#242632',
   primaryCardBackgroundColor: '#242632',
   primaryFontColor: '#fff',
   secondaryFontColor: 'rgba(255, 255, 255, 0.5)',
   primaryBorderValue: '1px solid rgba(255, 255, 255, 0.2)',
-  primaryBorderRadius: '20px',
-  tabletBorderRadius: '30px',
   primaryBoxShadowValue: '0px 0px 10px rgba(0, 0, 0, 0.5)',
-  outsideMobilePaddingLeftRight: '0.8rem',
-  outsideTabletPaddingLeftRight: '1.2rem',
-  outsideDesktopPaddingLeftRight: '1.6rem',
+  ...borderConstants,
+  ...outsidePaddingLeftRight,
   ...types,
 };
 
@@ -42,12 +50,9 @@ export const lightTheme = {
   primaryFontColor: '#5a5a5a',
   secondaryFontColor: 'rgba(90, 90, 90, 0.5)',
   primaryBorderValue: 'none',
-  primaryBorderRadius: '20px',
-  tabletBorderRadius: '30px',
+  ...borderConstants,
   primaryBoxShadowValue: 'none',
-  outsideMobilePaddingLeftRight: '0.8rem',
-  outsideTabletPaddingLeftRight: '1.2rem',
-  outsideDesktopPaddingLeftRight: '1.6rem',
+  ...outsidePaddingLeftRight,
   ...types,
 };
 
