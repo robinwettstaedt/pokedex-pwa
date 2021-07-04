@@ -85,7 +85,7 @@ const DexEntry = () => {
             )}
             <Image routeID={routeID} />
 
-            <Stats stats={apiData.stats} />
+            <Stats stats={apiData.stats} type={firstType} />
             <Dimensions height={apiData.height} weight={apiData.weight} />
             <Abilities abilities={apiData.abilities} />
           </GridWrapper>

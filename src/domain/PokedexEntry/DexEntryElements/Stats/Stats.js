@@ -1,7 +1,18 @@
 import React, { useEffect } from 'react';
-import { Wrapper } from './styles/styles';
+import {
+  Wrapper,
+  StatsBackground,
+  BarsWrapper,
+  StatsBarEmpty,
+  StatsBarFilled,
+  NumbersWrapper,
+  Number,
+  StatNamesWrapper,
+  Stat,
+  BarWithStatWrapper,
+} from './styles/styles';
 
-const Stats = ({ stats }) => {
+const Stats = ({ stats, type }) => {
   useEffect(() => {
     console.log(stats[0].stat.name, stats[0].base_stat);
     console.log(stats[1].stat.name, stats[1].base_stat);
@@ -13,7 +24,62 @@ const Stats = ({ stats }) => {
 
   return (
     <>
-      <Wrapper>Here will be the stats</Wrapper>
+      <Wrapper>
+        <StatsBackground type={type}>
+          <NumbersWrapper>
+            <Number>250</Number>
+            <Number>200</Number>
+            <Number>150</Number>
+            <Number>100</Number>
+            <Number>50</Number>
+            <Number>0</Number>
+          </NumbersWrapper>
+
+          <BarsWrapper>
+            <BarWithStatWrapper>
+              <StatsBarEmpty>
+                <StatsBarFilled />
+              </StatsBarEmpty>
+              <Stat>HP</Stat>
+            </BarWithStatWrapper>
+
+            <BarWithStatWrapper>
+              <StatsBarEmpty>
+                <StatsBarFilled />
+              </StatsBarEmpty>
+              <Stat>HP</Stat>
+            </BarWithStatWrapper>
+
+            <BarWithStatWrapper>
+              <StatsBarEmpty>
+                <StatsBarFilled />
+              </StatsBarEmpty>
+              <Stat>HP</Stat>
+            </BarWithStatWrapper>
+
+            <BarWithStatWrapper>
+              <StatsBarEmpty>
+                <StatsBarFilled />
+              </StatsBarEmpty>
+              <Stat>HP</Stat>
+            </BarWithStatWrapper>
+
+            <BarWithStatWrapper>
+              <StatsBarEmpty>
+                <StatsBarFilled />
+              </StatsBarEmpty>
+              <Stat>HP</Stat>
+            </BarWithStatWrapper>
+
+            <BarWithStatWrapper>
+              <StatsBarEmpty>
+                <StatsBarFilled />
+              </StatsBarEmpty>
+              <Stat>HP</Stat>
+            </BarWithStatWrapper>
+          </BarsWrapper>
+        </StatsBackground>
+      </Wrapper>
     </>
   );
 };

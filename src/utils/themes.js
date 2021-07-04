@@ -39,6 +39,7 @@ export const darkTheme = {
   secondaryFontColor: 'rgba(255, 255, 255, 0.5)',
   primaryBorderValue: '1px solid rgba(255, 255, 255, 0.2)',
   primaryBoxShadowValue: '0px 0px 10px rgba(0, 0, 0, 0.5)',
+  statsBarBackgroundColor: '#242632',
   ...borderConstants,
   ...outsidePaddingLeftRight,
   ...types,
@@ -50,8 +51,9 @@ export const lightTheme = {
   primaryFontColor: '#5a5a5a',
   secondaryFontColor: 'rgba(90, 90, 90, 0.5)',
   primaryBorderValue: 'none',
-  ...borderConstants,
   primaryBoxShadowValue: 'none',
+  statsBarBackgroundColor: '#5a5a5a',
+  ...borderConstants,
   ...outsidePaddingLeftRight,
   ...types,
 };
