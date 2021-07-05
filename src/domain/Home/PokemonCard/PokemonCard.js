@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import app from '../../../utils/Firebase';
+import { Wrapper } from './styles/styles';
+import Image from '../../PokedexEntry/DexEntryElements/PokemonImage/Image';
+import CardTypes from './CardElements/CardTypes/CardTypes';
 
 const PokemonCard = ({ number, dateCaught, first }) => {
   const [firstType, setFirstType] = useState('');
@@ -45,10 +48,12 @@ const PokemonCard = ({ number, dateCaught, first }) => {
   }, []);
 
   return (
-    <div>
+    <Wrapper>
       {first ? <p>Latest catch</p> : <p>Previous Catch</p>}
       {firstType && <p>{firstType}</p>}
       {secondType && <p>{secondType}</p>}
+      <CardTypes firstType={firstType} secondType={secondType} />
+      <Image routeID={pictureID} />
       {/* <img
         width={20}
         src={pokemonImage}
@@ -60,7 +65,7 @@ const PokemonCard = ({ number, dateCaught, first }) => {
         I was caught at:
         {dateCaught.toDate().toString().substring(4, 15)}
       </p>
-    </div>
+    </Wrapper>
   );
 };
 

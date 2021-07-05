@@ -1,12 +1,11 @@
 import React from 'react';
-import Type from './Type/Type';
+import Type from '../../../../PokedexEntry/DexEntryElements/Types/Type/Type';
 import { Wrapper } from './styles/styles';
 
-const Types = ({ firstType, secondType }) => {
+const CardTypes = ({ firstType, secondType }) => {
   return (
     <>
       <Wrapper>
-        <span className="text">Type</span>
         <span className="types">
           {firstType && <Type type={firstType} />}
           {secondType && (
@@ -20,4 +19,4 @@ const Types = ({ firstType, secondType }) => {
   );
 };
 
-export default Types;
+export default CardTypes;

@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import app from '../../utils/Firebase';
 import { AuthContext } from '../../contexts/AuthContext';
 import PokemonCard from './PokemonCard/PokemonCard';
+import { Wrapper, CardWrapper } from './styles/styles';
 
 const Home = () => {
   const { currentUser } = useContext(AuthContext);
@@ -97,19 +98,21 @@ const Home = () => {
   }, [currentUser.uid]);
 
   return (
-    <>
-      <h1>Home</h1>
-      {currentUser && <p>currentuser email: {currentUser.uid}</p>}
-      {initialCards &&
-        initialCards.map((Component, key) => <div key={key}>{Component}</div>)}
+    <Wrapper>
+      <CardWrapper>
+        {initialCards &&
+          initialCards.map((Component, key) => (
+            <div key={key}>{Component}</div>
+          ))}
 
-      {renderAdditional &&
-        additionalCards &&
-        additionalCards.map((Component, key) => (
-          <div key={key}>{Component}</div>
-        ))}
-      <button onClick={loadAdditionalCards}> load more </button>
-    </>
+        {renderAdditional &&
+          additionalCards &&
+          additionalCards.map((Component, key) => (
+            <div key={key}>{Component}</div>
+          ))}
+        <button onClick={loadAdditionalCards}> load more </button>
+      </CardWrapper>
+    </Wrapper>
   );
 };
 
