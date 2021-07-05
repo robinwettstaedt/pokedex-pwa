@@ -28,7 +28,6 @@ export const StatsBackground = styled.div`
   display: grid;
   grid-template-columns: 1fr, 15fr;
   grid-template-rows: 6fr, 1fr;
-  /* grid-template-areas: 'numbers | bars | bars' 'none | stat-names stat-names'; */
 
   background-color: ${(props) => props.theme[props.type]};
   border-radius: ${(props) => props.theme.primaryBorderRadius};
@@ -99,17 +98,6 @@ export const StatsBarFilled = styled.div`
   border-radius: 50%;
   background-color: #fff;
   border-radius: ${(props) => props.theme.tabletBorderRadius};
-`;
-
-export const StatNamesWrapper = styled.div`
-  grid-column-start: 2;
-  grid-column-end: 8;
-  grid-row-start: 6;
-  grid-row-end: 7;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
 `;
 
 export const BarWithStatWrapper = styled.div`

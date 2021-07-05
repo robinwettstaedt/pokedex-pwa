@@ -23,10 +23,10 @@ export const TypeButton = styled.div`
   }
 
   @media only screen and (min-width: 1024px) {
-    width: 150px;
+    width: 130px;
     height: 60px;
 
     font-size: 2.2rem;
-    border-radius: 12px;
+    border-radius: 10px;
   }
 `;

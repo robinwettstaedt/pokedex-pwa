@@ -1,48 +1,58 @@
 import React from 'react';
-import { Wrapper } from './styles/styles';
+import {
+  Wrapper,
+  Heading,
+  AbilitiesWrapper,
+  AbilityPlaceholder,
+  HiddenAbility,
+  RegularAbility,
+} from './styles/styles';
 
-//hidden
 const Abilities = ({ abilities }) => {
   return (
-    <>
-      <Wrapper>
-        <div className="heading">Abilities</div>
-        <div className="abilities">
-          {abilities[0] && (
-            <span>
-              {abilities[0].ability.name.charAt(0).toUpperCase() +
-                abilities[0].ability.name.slice(1)}
-            </span>
-          )}
+    <Wrapper>
+      <Heading>Abilities</Heading>
+      <AbilitiesWrapper>
+        {abilities[0] && (
+          <RegularAbility>
+            {abilities[0].ability.name.charAt(0).toUpperCase() +
+              abilities[0].ability.name.slice(1)}
+          </RegularAbility>
+        )}
 
-          {abilities[1] ? (
-            <span
-              className={
-                abilities[1].is_hidden ? 'hidden-ability' : 'second-ability'
-              }
-            >
+        {abilities[1] ? (
+          abilities[1].is_hidden ? (
+            <HiddenAbility>
               {abilities[1].ability.name.charAt(0).toUpperCase() +
                 abilities[1].ability.name.slice(1)}
-            </span>
+            </HiddenAbility>
           ) : (
-            <span className="ability-placeholder">-</span>
-          )}
+            <RegularAbility>
+              {abilities[1].ability.name.charAt(0).toUpperCase() +
+                abilities[1].ability.name.slice(1)}
+            </RegularAbility>
+          )
+        ) : (
+          <AbilityPlaceholder>-</AbilityPlaceholder>
+        )}
 
-          {abilities[2] ? (
-            <span
-              className={
-                abilities[1].is_hidden ? 'hidden-ability' : 'third-ability'
-              }
-            >
+        {abilities[2] ? (
+          abilities[2].is_hidden ? (
+            <HiddenAbility>
               {abilities[2].ability.name.charAt(0).toUpperCase() +
                 abilities[2].ability.name.slice(1)}
-            </span>
+            </HiddenAbility>
           ) : (
-            <span className="ability-placeholder">-</span>
-          )}
-        </div>
-      </Wrapper>
-    </>
+            <RegularAbility>
+              {abilities[2].ability.name.charAt(0).toUpperCase() +
+                abilities[2].ability.name.slice(1)}
+            </RegularAbility>
+          )
+        ) : (
+          <AbilityPlaceholder>-</AbilityPlaceholder>
+        )}
+      </AbilitiesWrapper>
+    </Wrapper>
   );
 };
 
