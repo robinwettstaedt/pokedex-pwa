@@ -4,9 +4,6 @@ export const Wrapper = styled.div`
   color: ${(props) => props.theme.primaryFontColor};
   background: ${(props) => props.theme.primaryCardBackgroundColor};
 
-  height: 60px;
-  padding: 1rem;
-
   display: flex;
   justify-content: space-between;
   align-items: center;

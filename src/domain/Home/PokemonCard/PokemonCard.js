@@ -4,8 +4,11 @@ import app from '../../../utils/Firebase';
 import { Wrapper } from './styles/styles';
 import Image from '../../PokedexEntry/DexEntryElements/PokemonImage/Image';
 import CardTypes from './CardElements/CardTypes/CardTypes';
+import CardName from './CardElements/CardName/CardName';
+import DateHeader from './CardElements/DateHeader/DateHeader';
 
 const PokemonCard = ({ number, dateCaught, first }) => {
+  const [apiData, setAPIData] = useState(null);
   const [firstType, setFirstType] = useState('');
   const [secondType, setSecondType] = useState('');
   const [pokemonImage, setPokemonImage] = useState(null);
@@ -23,6 +26,7 @@ const PokemonCard = ({ number, dateCaught, first }) => {
     const response = await axios.get(
       `https://pokeapi.co/api/v2/pokemon/${number}`
     );
+    setAPIData(response.data);
     if (response.data.types.length === 1) {
       setFirstType(response.data.types[0].type.name);
     } else {
@@ -49,22 +53,17 @@ const PokemonCard = ({ number, dateCaught, first }) => {
 
   return (
     <Wrapper>
-      {first ? <p>Latest catch</p> : <p>Previous Catch</p>}
-      {firstType && <p>{firstType}</p>}
-      {secondType && <p>{secondType}</p>}
-      <CardTypes firstType={firstType} secondType={secondType} />
-      <Image routeID={pictureID} />
-      {/* <img
-        width={20}
-        src={pokemonImage}
-        // src={process.env.PUBLIC_URL + `/images/${routeID}.png`}
-        alt={`Pokemon Number: ${pictureID}`}
-      /> */}
-      <p>number: #{pictureID}</p>
-      <p>
-        I was caught at:
-        {dateCaught.toDate().toString().substring(4, 15)}
-      </p>
+      {apiData && (
+        <>
+          <DateHeader
+            first={first}
+            date={dateCaught.toDate().toString().substring(4, 15)}
+          />
+          <CardName pokemonName={apiData.forms[0].name} number={pictureID} />
+          <CardTypes firstType={firstType} secondType={secondType} />
+          <Image routeID={pictureID} />
+        </>
+      )}
     </Wrapper>
   );
 };

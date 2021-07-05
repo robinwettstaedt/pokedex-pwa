@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import app from '../../utils/Firebase';
 import { AuthContext } from '../../contexts/AuthContext';
 import PokemonCard from './PokemonCard/PokemonCard';
-import { Wrapper, CardWrapper } from './styles/styles';
+import { Wrapper, CardWrapper, Heading } from './styles/styles';
 
 const Home = () => {
   const { currentUser } = useContext(AuthContext);
@@ -100,6 +100,7 @@ const Home = () => {
   return (
     <Wrapper>
       <CardWrapper>
+        <Heading>Your Catches</Heading>
         {initialCards &&
           initialCards.map((Component, key) => (
             <div key={key}>{Component}</div>

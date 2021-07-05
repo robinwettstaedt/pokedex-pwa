@@ -4,9 +4,11 @@ export const Wrapper = styled.div`
   color: ${(props) => props.theme.primaryFontColor};
   background: ${(props) => props.theme.primaryCardBackgroundColor};
 
-  padding: 0 1rem;
+  padding: 1rem;
 
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
   border-radius: ${(props) => props.theme.primaryBorderRadius};
   border: ${(props) => props.theme.primaryBorderValue};
