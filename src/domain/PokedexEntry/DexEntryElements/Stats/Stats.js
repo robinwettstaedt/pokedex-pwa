@@ -38,44 +38,44 @@ const Stats = ({ stats, type }) => {
           <BarsWrapper>
             <BarWithStatWrapper>
               <StatsBarEmpty>
-                <StatsBarFilled />
+                <StatsBarFilled height={100 / (250 / stats[0].base_stat)} />
               </StatsBarEmpty>
               <Stat>HP</Stat>
             </BarWithStatWrapper>
 
             <BarWithStatWrapper>
               <StatsBarEmpty>
-                <StatsBarFilled />
+                <StatsBarFilled height={100 / (250 / stats[1].base_stat)} />
               </StatsBarEmpty>
-              <Stat>HP</Stat>
+              <Stat>ATT</Stat>
             </BarWithStatWrapper>
 
             <BarWithStatWrapper>
               <StatsBarEmpty>
-                <StatsBarFilled />
+                <StatsBarFilled height={100 / (250 / stats[2].base_stat)} />
               </StatsBarEmpty>
-              <Stat>HP</Stat>
+              <Stat>DEF</Stat>
             </BarWithStatWrapper>
 
             <BarWithStatWrapper>
               <StatsBarEmpty>
-                <StatsBarFilled />
+                <StatsBarFilled height={100 / (250 / stats[3].base_stat)} />
               </StatsBarEmpty>
-              <Stat>HP</Stat>
+              <Stat>S.A</Stat>
             </BarWithStatWrapper>
 
             <BarWithStatWrapper>
               <StatsBarEmpty>
-                <StatsBarFilled />
+                <StatsBarFilled height={100 / (250 / stats[4].base_stat)} />
               </StatsBarEmpty>
-              <Stat>HP</Stat>
+              <Stat>S.D</Stat>
             </BarWithStatWrapper>
 
             <BarWithStatWrapper>
               <StatsBarEmpty>
-                <StatsBarFilled />
+                <StatsBarFilled height={100 / (250 / stats[5].base_stat)} />
               </StatsBarEmpty>
-              <Stat>HP</Stat>
+              <Stat>SPD</Stat>
             </BarWithStatWrapper>
           </BarsWrapper>
         </StatsBackground>

@@ -4,7 +4,7 @@ const types = {
   electric: '#F9C13E',
   grass: '#85BF79',
   poison: '#8F30C9',
-  normal: '#D6D6D6',
+  normal: '#c7c7c7',
   fire: '#E77341',
   water: '#4C83ED',
   fighting: '#A65E48',

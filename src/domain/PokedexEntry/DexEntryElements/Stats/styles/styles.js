@@ -54,7 +54,15 @@ export const NumbersWrapper = styled.div`
 `;
 
 export const Number = styled.div`
-  font-size: 1rem;
+  font-size: 1.2rem;
+  color: white;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1.5rem;
+  }
+  @media only screen and (min-width: 1024px) {
+    font-size: 2rem;
+  }
 `;
 
 export const BarsWrapper = styled.div`
@@ -74,13 +82,23 @@ export const StatsBarEmpty = styled.div`
   height: 90%;
   width: 18px;
   border-radius: ${(props) => props.theme.tabletBorderRadius};
-  background-color: ${(props) => props.theme.statsBarBackgroundColor}; ;
+  background-color: ${(props) => props.theme.statsBarBackgroundColor};
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  @media only screen and (min-width: 1024px) {
+    width: 28px;
+  }
 `;
 
 export const StatsBarFilled = styled.div`
-  height: 70%;
+  height: ${(props) => props.height}%;
+  width: 100%;
   border-radius: 50%;
-  background-color: 'white';
+  background-color: #fff;
+  border-radius: ${(props) => props.theme.tabletBorderRadius};
 `;
 
 export const StatNamesWrapper = styled.div`
@@ -96,6 +114,7 @@ export const StatNamesWrapper = styled.div`
 
 export const BarWithStatWrapper = styled.div`
   height: 100%;
+  width: 10%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -103,5 +122,12 @@ export const BarWithStatWrapper = styled.div`
 `;
 export const Stat = styled.div`
   font-size: 1rem;
-  /* margin-top: 0.5rem; */
+  color: white;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1.1rem;
+  }
+  @media only screen and (min-width: 1024px) {
+    font-size: 1.5rem;
+  }
 `;
