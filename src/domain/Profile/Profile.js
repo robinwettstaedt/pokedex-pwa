@@ -2,6 +2,8 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import app from '../../utils/Firebase';
+import { Wrapper, CardWrapper, ButtonWrapper } from './styles/styles';
+import AvatarCard from './ProfileElements/AvatarCard/AvatarCard';
 
 function Profile() {
   const { currentUser } = useContext(AuthContext);
@@ -34,17 +36,18 @@ function Profile() {
   }, [currentUser.uid]);
 
   return (
-    <div>
-      <p> This is the profile of {currentUser.email}</p>
-      <p>You have caught {count} / 151 Pokemon</p>
-      <Link to="/profile/delete">Delete your Account</Link>
-      <br />
-      <Link to="/profile/avatar">Change your Avatar Image</Link>
-      <br />
-      <Link to="/profile/username">Change your Username</Link>
-      <br />
-      <Link to="/profile/passwordchange">Change your Password</Link>
-    </div>
+    <Wrapper>
+      <AvatarCard count={count} />
+      <CardWrapper>
+        <Link to="/profile/delete">Delete your Account</Link>
+        <br />
+        <Link to="/profile/avatar">Change your Avatar Image</Link>
+        <br />
+        <Link to="/profile/username">Change your Username</Link>
+        <br />
+        <Link to="/profile/passwordchange">Change your Password</Link>
+      </CardWrapper>
+    </Wrapper>
   );
 }
 
