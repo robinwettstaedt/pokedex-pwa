@@ -2,7 +2,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import app from '../../utils/Firebase';
 import { AuthContext } from '../../contexts/AuthContext';
 import PokemonCard from './PokemonCard/PokemonCard';
-import { Wrapper, CardWrapper, Heading } from './styles/styles';
+import {
+  Wrapper,
+  CardWrapper,
+  Heading,
+  Button,
+  BottomSpacer,
+  SpacerDot,
+} from './styles/styles';
 
 const Home = () => {
   const { currentUser } = useContext(AuthContext);
@@ -69,7 +76,7 @@ const Home = () => {
                 first={true}
               />
             );
-          } else if (i < 1) {
+          } else if (i < 6) {
             firstSixComponents.push(
               <PokemonCard
                 number={catchesArray[i].number}
@@ -99,8 +106,8 @@ const Home = () => {
 
   return (
     <Wrapper>
+      <Heading>Your Catches</Heading>
       <CardWrapper>
-        <Heading>Your Catches</Heading>
         {initialCards &&
           initialCards.map((Component, key) => (
             <div key={key}>{Component}</div>
@@ -111,7 +118,12 @@ const Home = () => {
           additionalCards.map((Component, key) => (
             <div key={key}>{Component}</div>
           ))}
-        <button onClick={loadAdditionalCards}> load more </button>
+        {!renderAdditional && (
+          <Button onClick={loadAdditionalCards}>Load More</Button>
+        )}
+        <BottomSpacer>
+          <SpacerDot />
+        </BottomSpacer>
       </CardWrapper>
     </Wrapper>
   );

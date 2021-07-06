@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import app from '../../../utils/Firebase';
 import { Wrapper } from './styles/styles';
-import Image from '../../PokedexEntry/DexEntryElements/PokemonImage/Image';
+import CardImage from './CardElements/CardImage/CardImage';
 import CardTypes from './CardElements/CardTypes/CardTypes';
 import CardName from './CardElements/CardName/CardName';
 import DateHeader from './CardElements/DateHeader/DateHeader';
@@ -11,7 +10,6 @@ const PokemonCard = ({ number, dateCaught, first }) => {
   const [apiData, setAPIData] = useState(null);
   const [firstType, setFirstType] = useState('');
   const [secondType, setSecondType] = useState('');
-  const [pokemonImage, setPokemonImage] = useState(null);
 
   let pictureID;
   if (number < 10) {
@@ -35,19 +33,8 @@ const PokemonCard = ({ number, dateCaught, first }) => {
     }
   };
 
-  const getPokemonImage = async () => {
-    const url = await app
-      .storage()
-      .ref()
-      .child(`pokemonImages/${pictureID}.png`)
-      .getDownloadURL();
-
-    setPokemonImage(url);
-  };
-
   useEffect(() => {
     getDetails();
-    getPokemonImage();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -61,7 +48,7 @@ const PokemonCard = ({ number, dateCaught, first }) => {
           />
           <CardName pokemonName={apiData.forms[0].name} number={pictureID} />
           <CardTypes firstType={firstType} secondType={secondType} />
-          <Image routeID={pictureID} />
+          <CardImage routeID={pictureID} />
         </>
       )}
     </Wrapper>

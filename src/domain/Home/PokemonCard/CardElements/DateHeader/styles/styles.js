@@ -7,16 +7,6 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  @media only screen and (min-width: 768px) {
-    padding: 1.5rem;
-    height: 10vh;
-    border-radius: ${(props) => props.theme.tabletBorderRadius};
-  }
-
-  @media only screen and (min-width: 1024px) {
-    padding: 2rem;
-  }
 `;
 
 export const PhraseWrapper = styled.div`
@@ -28,19 +18,27 @@ export const PhraseWrapper = styled.div`
 export const CatchPhrase = styled.div`
   font-size: 1.2rem;
   margin-right: 0.5rem;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1.4rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 1.9rem;
+  }
 `;
 
 export const IMG = styled.img`
   height: 20px;
 
   @media only screen and (min-width: 768px) {
-    height: 32px;
+    display: none;
   }
 
-  @media only screen and (min-width: 1024px) {
-    height: 42px;
-    margin-left: 1rem;
-  }
+  /* @media only screen and (min-width: 1024px) {
+    height: 24px;
+    display: block;
+  } */
 `;
 
 export const TimeWrapper = styled.div`
@@ -52,4 +50,12 @@ export const TimeWrapper = styled.div`
 export const Date = styled.div`
   font-size: 1.2rem;
   margin-left: 0.5rem;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1.4rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 1.9rem;
+  }
 `;
