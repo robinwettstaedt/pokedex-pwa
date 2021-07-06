@@ -47,8 +47,21 @@ export const ButtonWrapper = styled.div`
   box-shadow: ${(props) => props.theme.primaryBoxShadowValue};
 
   @media only screen and (min-width: 768px) {
-    padding: 1.5rem;
-    height: 10vh;
+    padding: 2rem;
     border-radius: ${(props) => props.theme.tabletBorderRadius};
+  }
+`;
+
+export const Button = styled(Link)`
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: ${(props) => (props.red ? '#F95959' : props.theme.primaryFontColor)};
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1.8rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 2.5rem;
   }
 `;

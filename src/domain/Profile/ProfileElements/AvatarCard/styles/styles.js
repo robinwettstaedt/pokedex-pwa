@@ -18,40 +18,39 @@ export const AvatarWrapper = styled.div`
   box-shadow: ${(props) => props.theme.primaryBoxShadowValue};
 
   @media only screen and (min-width: 768px) {
-    padding: 1.5rem;
-    height: 10vh;
+    gap: 48px;
+    padding: 3rem;
     border-radius: ${(props) => props.theme.tabletBorderRadius};
+  }
+
+  @media only screen and (min-width: 1024px) {
+    gap: 72px;
+    padding: 4rem;
   }
 `;
 
 export const AvatarImage = styled.img`
   width: 50vw;
+  max-width: 320px;
+
   border-radius: 50%;
   border: ${(props) => props.theme.primaryBorderValue};
   box-shadow: ${(props) => props.theme.boxShadow};
 
-  @media only screen and (min-width: 768px) {
-    height: 48px;
-  }
-
   @media only screen and (min-width: 1024px) {
-    height: 64px;
+    max-width: 380px;
   }
 `;
 
 export const Username = styled.div`
-  color: ${(props) => props.theme.primaryFontColor};
-  padding-left: 0.5rem;
-  text-decoration: none;
   font-size: 2rem;
 
   @media only screen and (min-width: 768px) {
-    font-size: 1.8rem;
-    padding-left: 0.8rem;
+    font-size: 3rem;
   }
 
   @media only screen and (min-width: 1024px) {
-    font-size: 2.4rem;
+    font-size: 4rem;
   }
 `;
 
@@ -61,4 +60,14 @@ export const CaughtWrapper = styled.div`
 
   display: flex;
   justify-content: space-between;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 2.5rem;
+    margin-top: 3rem;
+  }
 `;

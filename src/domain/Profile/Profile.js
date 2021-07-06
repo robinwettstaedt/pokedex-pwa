@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import app from '../../utils/Firebase';
-import { Wrapper, CardWrapper, ButtonWrapper } from './styles/styles';
+import { Wrapper, CardWrapper, ButtonWrapper, Button } from './styles/styles';
 import AvatarCard from './ProfileElements/AvatarCard/AvatarCard';
 
 function Profile() {
@@ -39,13 +39,20 @@ function Profile() {
     <Wrapper>
       <AvatarCard count={count} />
       <CardWrapper>
-        <Link to="/profile/delete">Delete your Account</Link>
-        <br />
-        <Link to="/profile/avatar">Change your Avatar Image</Link>
-        <br />
-        <Link to="/profile/username">Change your Username</Link>
-        <br />
-        <Link to="/profile/passwordchange">Change your Password</Link>
+        <ButtonWrapper>
+          <Button to="/profile/avatar">Change Picture</Button>
+        </ButtonWrapper>
+        <ButtonWrapper>
+          <Button to="/profile/username">Change Username</Button>
+        </ButtonWrapper>
+        <ButtonWrapper>
+          <Button to="/profile/passwordchange">Change Password</Button>
+        </ButtonWrapper>
+        <ButtonWrapper>
+          <Button red={true} to="/profile/delete">
+            Delete Account
+          </Button>
+        </ButtonWrapper>
       </CardWrapper>
     </Wrapper>
   );
