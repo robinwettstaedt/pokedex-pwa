@@ -49,7 +49,7 @@ function Profile() {
           <Button to="/profile/passwordchange">Change Password</Button>
         </ButtonWrapper>
         <ButtonWrapper>
-          <Button red={true} to="/profile/delete">
+          <Button red="true" to="/profile/delete">
             Delete Account
           </Button>
         </ButtonWrapper>

@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   align-items: center;
   padding: 1rem ${(props) => props.theme.outsideMobilePaddingLeftRight};
   gap: 12px;
+  margin-top: -12px;
 
   @media only screen and (min-width: 768px) {
     gap: 24px;
