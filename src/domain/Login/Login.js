@@ -2,6 +2,16 @@ import React, { useCallback, useContext } from 'react';
 import { withRouter, Redirect, useHistory, Link } from 'react-router-dom';
 import app from '../../utils/Firebase.js';
 import { AuthContext } from '../../contexts/AuthContext';
+import {
+  Wrapper,
+  LoginWrapper,
+  HeaderWrapper,
+  Heading,
+  HeaderText,
+  Form,
+  Label,
+  Input,
+} from '../../components/AuthForm/styles/styles.js';
 
 const Login = () => {
   let history = useHistory();
@@ -29,21 +39,28 @@ const Login = () => {
   }
 
   return (
-    <div>
-      <h1>Log in</h1>
-      <form onSubmit={handleLogin}>
-        <label>
-          Email
-          <input name="email" type="email" placeholder="Email" />
-        </label>
-        <label>
-          Password
-          <input name="password" type="password" placeholder="Password" />
-        </label>
-        <button type="submit">Log in</button>
-      </form>
-      <Link to="/signup">Sign up instead</Link>
-    </div>
+    <Wrapper>
+      <LoginWrapper>
+        <HeaderWrapper>
+          <Heading>The Pokedex</Heading>
+          <HeaderText>
+            This is a ajldk lk djalkdjaife c lkj flwead kjad kjwadd klac klajd
+            kwd wai ziljil cjailw
+          </HeaderText>
+        </HeaderWrapper>
+
+        <Form onSubmit={handleLogin}>
+          <Label for="email">Email</Label>
+
+          <Input name="email" type="email" placeholder="Email" />
+          <Label for="password">Password</Label>
+
+          <Input name="password" type="password" placeholder="Password" />
+          <button type="submit">Log in</button>
+        </Form>
+        <Link to="/signup">Sign up instead</Link>
+      </LoginWrapper>
+    </Wrapper>
   );
 };
 
