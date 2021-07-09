@@ -9,6 +9,7 @@ import {
   Button,
   BottomSpacer,
   SpacerDot,
+  EmptyWrapper,
 } from './styles/styles';
 
 const Home = () => {
@@ -108,6 +109,10 @@ const Home = () => {
     <Wrapper>
       <Heading>Your Catches</Heading>
       <CardWrapper>
+        {initialCards && initialCards.length === 0 && (
+          <EmptyWrapper>You haven't caught any Pokemon yet!</EmptyWrapper>
+        )}
+
         {initialCards &&
           initialCards.map((Component, key) => (
             <div key={key}>{Component}</div>
@@ -118,12 +123,18 @@ const Home = () => {
           additionalCards.map((Component, key) => (
             <div key={key}>{Component}</div>
           ))}
-        {!renderAdditional && (
-          <Button onClick={loadAdditionalCards}>Load More</Button>
+
+        {additionalCards &&
+          additionalCards.length !== 0 &&
+          !renderAdditional && (
+            <Button onClick={loadAdditionalCards}>Load More</Button>
+          )}
+
+        {initialCards && initialCards.length !== 0 && (
+          <BottomSpacer>
+            <SpacerDot />
+          </BottomSpacer>
         )}
-        <BottomSpacer>
-          <SpacerDot />
-        </BottomSpacer>
       </CardWrapper>
     </Wrapper>
   );

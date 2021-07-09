@@ -99,3 +99,27 @@ export const SpacerDot = styled.div`
     height: 20px;
   }
 `;
+
+export const EmptyWrapper = styled.div`
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: ${(props) => props.theme.primaryFontColor};
+  background: ${(props) => props.theme.primaryCardBackgroundColor};
+
+  border-radius: ${(props) => props.theme.primaryBorderRadius};
+  border: ${(props) => props.theme.primaryBorderValue};
+  box-shadow: ${(props) => props.theme.primaryBoxShadowValue};
+
+  @media only screen and (min-width: 768px) {
+    height: 80px;
+    font-size: 1.2rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    height: 100px;
+    font-size: 1.5rem;
+  }
+`;
