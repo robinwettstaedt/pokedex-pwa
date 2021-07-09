@@ -17,10 +17,10 @@ const Dropout = ({ isOpen, setDropoutOpen }) => {
         <Wrapper>
           <Spacer>
             <ClosingButton setDropoutOpen={setDropoutOpen} />
-            <ThemeChanger />
             <HomeLink setDropoutOpen={setDropoutOpen} />
             <ListLink setDropoutOpen={setDropoutOpen} />
             <ProfileLink setDropoutOpen={setDropoutOpen} />
+            <ThemeChanger />
             <GitHubLink />
             <SignOut />
           </Spacer>

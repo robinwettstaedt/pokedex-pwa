@@ -1,5 +1,5 @@
 import React, { useCallback, useContext } from 'react';
-import { withRouter, Redirect, useHistory, Link } from 'react-router-dom';
+import { withRouter, Redirect, useHistory } from 'react-router-dom';
 import app from '../../utils/Firebase.js';
 import { AuthContext } from '../../contexts/AuthContext';
 import {
@@ -45,10 +45,12 @@ const Login = () => {
     <Wrapper>
       <AuthWrapper>
         <HeaderWrapper>
-          <Heading>The Pokedex</Heading>
+          <Heading>Robin's Pokédex</Heading>
           <HeaderText>
-            dfkdlsj fkdsf klfjskd ljfklsdf klseklf jsefes kljfkl sjfkljsl jfl k
-            kew fjklefjk.
+            Thanks for checking out my Pokédex Web App! <br />
+            <br />
+            After signing up you will be able to get information on the
+            originial 151 Pokémon and mark which ones you have caught. Have fun!
           </HeaderText>
         </HeaderWrapper>
 
