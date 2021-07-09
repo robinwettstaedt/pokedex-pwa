@@ -12,18 +12,19 @@ export const Wrapper = styled.div`
   color: ${(props) => props.theme.primaryFontColor};
 `;
 
-export const LoginWrapper = styled.div`
+export const AuthWrapper = styled.div`
   height: 90vh;
   width: 90vw;
-  padding: 1rem;
+  max-width: 600px;
+  padding: 2rem;
 
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
 
   color: ${(props) => props.theme.primaryFontColor};
-
+  background: ${(props) => props.theme.primaryCardBackgroundColor};
   border-radius: ${(props) => props.theme.primaryBorderRadius};
   border: ${(props) => props.theme.primaryBorderValue};
   box-shadow: ${(props) => props.theme.primaryBoxShadowValue};
@@ -67,13 +68,36 @@ export const Label = styled.label`
 export const Input = styled.input`
   width: 80vw;
   max-width: 400px;
-  height: 36px;
+  height: 48px;
   padding: 1rem;
+  font-size: 1.5rem;
 
-  background: ${(props) => props.theme.primaryCardBackgroundColor};
+  color: ${(props) => props.theme.primaryFontColor};
+  background: ${(props) => props.theme.primaryBackgroundColor};
   border-radius: 20px;
   border: ${(props) => props.theme.primaryBorderValue};
   box-shadow: ${(props) => props.theme.boxShadow};
 `;
 
-export const SignUpLink = styled(Link)``;
+export const AuthLink = styled(Link)`
+  color: ${(props) => props.theme.primaryFontColor};
+  /* text-decoration: none; */
+`;
+
+export const Button = styled.button`
+  width: 40vw;
+  max-width: 200px;
+  height: 48px;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: ${(props) => props.theme.primaryFontColor};
+  background: ${(props) => props.theme.primaryBackgroundColor};
+  border-radius: 20px;
+  border: ${(props) => props.theme.primaryBorderValue};
+  box-shadow: ${(props) => props.theme.boxShadow};
+`;

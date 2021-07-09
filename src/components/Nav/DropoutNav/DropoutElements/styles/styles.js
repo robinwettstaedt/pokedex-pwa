@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
-  background: ${(props) => props.theme.primaryBackgroundColor};
-
   width: 30px;
   height: 30px;
   font-size: 1rem;

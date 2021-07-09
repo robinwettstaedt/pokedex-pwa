@@ -4,14 +4,17 @@ import app from '../../utils/Firebase.js';
 import { AuthContext } from '../../contexts/AuthContext';
 import {
   Wrapper,
-  LoginWrapper,
+  AuthWrapper,
   HeaderWrapper,
   Heading,
   HeaderText,
   Form,
   Label,
   Input,
+  Button,
+  AuthLink,
 } from '../../components/AuthForm/styles/styles.js';
+import ThemeChanger from '../../components/Nav/DropoutNav/DropoutElements/ThemeChanger.js';
 
 const Login = () => {
   let history = useHistory();
@@ -40,12 +43,12 @@ const Login = () => {
 
   return (
     <Wrapper>
-      <LoginWrapper>
+      <AuthWrapper>
         <HeaderWrapper>
           <Heading>The Pokedex</Heading>
           <HeaderText>
-            This is a ajldk lk djalkdjaife c lkj flwead kjad kjwadd klac klajd
-            kwd wai ziljil cjailw
+            dfkdlsj fkdsf klfjskd ljfklsdf klseklf jsefes kljfkl sjfkljsl jfl k
+            kew fjklefjk.
           </HeaderText>
         </HeaderWrapper>
 
@@ -56,10 +59,11 @@ const Login = () => {
           <Label for="password">Password</Label>
 
           <Input name="password" type="password" placeholder="Password" />
-          <button type="submit">Log in</button>
+          <Button type="submit">Log in</Button>
         </Form>
-        <Link to="/signup">Sign up instead</Link>
-      </LoginWrapper>
+        <ThemeChanger />
+        <AuthLink to="/signup">Sign up instead</AuthLink>
+      </AuthWrapper>
     </Wrapper>
   );
 };
