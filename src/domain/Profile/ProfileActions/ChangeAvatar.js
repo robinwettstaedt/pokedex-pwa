@@ -3,6 +3,7 @@ import { AuthContext } from '../../../contexts/AuthContext';
 import { ModalContext } from '../../../contexts/ModalContext';
 import Modal from '../../../components/Modal/Modal';
 import app from '../../../utils/Firebase';
+import { ActionWrapper, Wrapper, Input, Button, Form } from './styles/styles';
 
 function ChangeAvatar() {
   const { currentUser } = useContext(AuthContext);
@@ -64,16 +65,21 @@ function ChangeAvatar() {
     }
   };
   return (
-    <div>
-      <input type="file" onChange={onFileInput} />
-      <button onClick={restoreDefaultImage}>Delete my Avatar picture</button>
-      <Modal
-        setShowModal={setShowModal}
-        showModal={showModal}
-        modalContent={modalContent}
-      />
-      ;
-    </div>
+    <Wrapper>
+      <ActionWrapper>
+        <Form>
+          <Input type="file" onChange={onFileInput} />
+          <Button onClick={restoreDefaultImage}>
+            Delete my Avatar picture
+          </Button>
+        </Form>
+        <Modal
+          setShowModal={setShowModal}
+          showModal={showModal}
+          modalContent={modalContent}
+        />
+      </ActionWrapper>
+    </Wrapper>
   );
 }
 
