@@ -1,14 +1,12 @@
-import React, { useState, useContext, useRef } from 'react';
+import React, { useContext, useRef } from 'react';
 import { AuthContext } from '../../../../contexts/AuthContext';
 import { ModalContext } from '../../../../contexts/ModalContext';
-import Modal from '../../../../components/Modal/Modal';
 import app from '../../../../utils/Firebase';
 import { ActionWrapper, Wrapper, FileInput, Button } from './styles/styles';
 
 function ChangeAvatar() {
   const { currentUser } = useContext(AuthContext);
-  const { showModal, setShowModal } = useContext(ModalContext);
-  const [modalContent, setModalContent] = useState(<p>default modalContent</p>);
+  const { setModalContent, setShowModal } = useContext(ModalContext);
   const hiddenFileInput = useRef(null);
 
   const handleClick = (e) => {
@@ -27,19 +25,14 @@ function ChangeAvatar() {
       await currentUser.updateProfile({
         photoURL: url,
       });
-      setModalContent(
-        <p>
-          Your Avatar Image has been updated! Move to another page to see the
-          changes.
-        </p>
-      );
+      setModalContent(<>Your Avatar Image has been updated!</>);
       setShowModal(true);
     } catch {
       setModalContent(
-        <p>
+        <>
           There has been an issue with the Avatar change. Please relog and try
           again.
-        </p>
+        </>
       );
       setShowModal(true);
     }
@@ -51,19 +44,14 @@ function ChangeAvatar() {
         photoURL: null,
       });
 
-      setModalContent(
-        <p>
-          Your Avatar Image has been updated to the default! Move to another
-          page to see the changes.
-        </p>
-      );
+      setModalContent(<>Your Avatar Image has been updated to the default!</>);
       setShowModal(true);
     } catch (error) {
       setModalContent(
-        <p>
+        <>
           There has been an issue with the Avatar change. Please relog and try
           again.
-        </p>
+        </>
       );
       setShowModal(true);
     }
@@ -76,11 +64,6 @@ function ChangeAvatar() {
         <Button isBottom="true" onClick={restoreDefaultImage}>
           Delete My Picture
         </Button>
-        <Modal
-          setShowModal={setShowModal}
-          showModal={showModal}
-          modalContent={modalContent}
-        />
       </ActionWrapper>
     </Wrapper>
   );

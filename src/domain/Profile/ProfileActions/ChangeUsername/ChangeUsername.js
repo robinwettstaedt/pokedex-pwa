@@ -15,10 +15,8 @@ import {
 
 function ChangeUsername() {
   const { currentUser } = useContext(AuthContext);
-  const { showModal, setShowModal } = useContext(ModalContext);
   const [newUsername, setNewUsername] = useState('');
-
-  const modalContent = <div>Ey jo miene freunde</div>;
+  const { setShowModal, setModalContent } = useContext(ModalContext);
 
   const handleChange = (e) => {
     setNewUsername(e.target.value);
@@ -27,12 +25,14 @@ function ChangeUsername() {
   const setUsername = async (e) => {
     e.preventDefault();
     try {
+      setModalContent(<>Your Username has been changed!</>);
       setShowModal(true);
       await currentUser.updateProfile({
         displayName: newUsername,
       });
     } catch (error) {
-      alert('There has been an error: ', error);
+      setModalContent(<>There has been an error!: {error}</>);
+      setShowModal(true);
     }
   };
 
@@ -57,12 +57,6 @@ function ChangeUsername() {
             Submit
           </Button>
         </Form>
-
-        <Modal
-          setShowModal={setShowModal}
-          showModal={showModal}
-          modalContent={modalContent}
-        />
       </ActionWrapper>
     </Wrapper>
   );

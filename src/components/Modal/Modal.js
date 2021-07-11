@@ -1,16 +1,24 @@
-import React from 'react';
-import { ModalContainer } from './styles/ModalElements';
+import React, { useContext } from 'react';
+import { ModalContext } from '../../contexts/ModalContext';
+import {
+  ModalBackground,
+  ModalContainer,
+  ModalButton,
+  ModalContent,
+} from './styles/ModalElements';
 
-const Modal = ({ showModal, setShowModal, modalContent }) => {
+const Modal = () => {
+  const { showModal, setShowModal, modalContent } = useContext(ModalContext);
   return (
-    <div>
-      {showModal ? (
-        <ModalContainer>
-          {modalContent}
-          <button onClick={() => setShowModal(!showModal)}>Close</button>
-        </ModalContainer>
-      ) : null}
-    </div>
+    <>
+      <ModalBackground />
+      <ModalContainer>
+        <ModalContent>{modalContent}</ModalContent>
+        <ModalButton onClick={() => setShowModal(!showModal)}>
+          Close
+        </ModalButton>
+      </ModalContainer>
+    </>
   );
 };
 

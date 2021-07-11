@@ -15,12 +15,16 @@ import DeleteAccount from '../../domain/Profile/ProfileActions/DeleteAccount/Del
 import ChangePassword from '../../domain/Profile/ProfileActions/ChangePassword/ChangePassword';
 import ChangeAvatar from '../../domain/Profile/ProfileActions/ChangeAvatar/ChangeAvatar';
 import ChangeUsername from '../../domain/Profile/ProfileActions/ChangeUsername/ChangeUsername';
+import Modal from '../Modal/Modal';
+import { ModalContext } from '../../contexts/ModalContext';
 
 const App = () => {
   const { theme } = useContext(ThemeChangeContext);
+  const { showModal } = useContext(ModalContext);
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyles theme={theme} />
+      {showModal && <Modal />}
       <Router>
         <div>
           <PrivateRoute path="/" component={Nav} />

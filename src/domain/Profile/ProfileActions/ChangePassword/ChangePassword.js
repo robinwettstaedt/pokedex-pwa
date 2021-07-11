@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../contexts/AuthContext';
 import { ModalContext } from '../../../../contexts/ModalContext';
-import Modal from '../../../../components/Modal/Modal';
 import {
   Wrapper,
   ActionWrapper,
@@ -15,10 +14,9 @@ import {
 
 function ChangeUsername() {
   const { currentUser } = useContext(AuthContext);
-  const { showModal, setShowModal } = useContext(ModalContext);
+  const { setModalContent, setShowModal } = useContext(ModalContext);
 
   const [newPassword, setNewPassword] = useState('');
-  const [modalContent, setModalContent] = useState(<p>default modalContent</p>);
 
   const handleChange = (e) => {
     setNewPassword(e.target.value);
@@ -29,19 +27,15 @@ function ChangeUsername() {
     try {
       await currentUser.updatePassword(newPassword);
       setNewPassword('');
-      setModalContent(
-        <p>
-          modalContent for confirmation: Your Password has been updated
-          successfully.
-        </p>
-      );
+      setModalContent(<>Your Password has been updated successfully.</>);
       setShowModal(true);
     } catch {
+      setNewPassword('');
       setModalContent(
-        <p>
-          modalContent for error: 'Please sign out and log in again. In order to
-          delete your account you must have signed in recently. ',
-        </p>
+        <>
+          Please sign out and log in again. In order to change your password you
+          must have signed in recently.
+        </>
       );
       setShowModal(true);
     }
@@ -68,11 +62,6 @@ function ChangeUsername() {
             Submit
           </Button>
         </Form>
-        <Modal
-          setShowModal={setShowModal}
-          showModal={showModal}
-          modalContent={modalContent}
-        />
       </ActionWrapper>
     </Wrapper>
   );
