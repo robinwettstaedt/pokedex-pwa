@@ -3,12 +3,7 @@ import Search from './NavElements/Search/Search';
 import Dropout from './DropoutNav/Dropout';
 import MenuButton from './NavElements/MenuButton';
 import Avatar from './NavElements/Avatar';
-import {
-  NavWrapper,
-  PlaceholderNav,
-  RightWrapper,
-  Wrapper,
-} from './styles/styles';
+import { NavWrapper, PlaceholderNav, RightWrapper } from './styles/styles';
 import { AuthContext } from '../../contexts/AuthContext';
 
 function Nav() {

@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../../contexts/AuthContext';
-import { AvatarWrapper, Username, AvatarImage } from './styles/styles';
+import { Username, AvatarImage } from './styles/styles';
 import app from '../../../utils/Firebase';
 
 function Avatar() {

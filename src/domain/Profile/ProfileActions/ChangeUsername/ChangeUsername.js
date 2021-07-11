@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../contexts/AuthContext';
 import { ModalContext } from '../../../../contexts/ModalContext';
-import Modal from '../../../../components/Modal/Modal';
 import {
   Wrapper,
   ActionWrapper,
@@ -30,9 +29,11 @@ function ChangeUsername() {
       await currentUser.updateProfile({
         displayName: newUsername,
       });
+      setNewUsername('');
     } catch (error) {
       setModalContent(<>There has been an error!: {error}</>);
       setShowModal(true);
+      setNewUsername('');
     }
   };
 

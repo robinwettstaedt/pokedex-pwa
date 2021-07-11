@@ -3,11 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { SearchContext } from '../../../../../contexts/SearchContext';
-import {
-  SearchButtonWrapper,
-  GlassWrapper,
-  CrossWrapper,
-} from '../../styles/styles';
+import { SearchButtonWrapper, GlassWrapper } from '../../styles/styles';
 
 const SearchButton = () => {
   const { searching, setSearching } = useContext(SearchContext);

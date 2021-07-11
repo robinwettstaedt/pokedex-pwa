@@ -1,7 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { AuthContext } from '../../contexts/AuthContext';
 import app from '../../utils/Firebase';
-import { Wrapper, CardWrapper, ButtonWrapper, Button } from './styles/styles';
+import {
+  Wrapper,
+  CardWrapper,
+  ButtonWrapper,
+  Button,
+  AvatarWrapper,
+} from './styles/styles';
 import AvatarCard from './ProfileElements/AvatarCard/AvatarCard';
 
 function Profile() {
@@ -36,7 +42,9 @@ function Profile() {
 
   return (
     <Wrapper>
-      <AvatarCard count={count} />
+      <AvatarWrapper>
+        <AvatarCard count={count} />
+      </AvatarWrapper>
       <CardWrapper>
         <ButtonWrapper>
           <Button to="/profile/avatar">Change Picture</Button>

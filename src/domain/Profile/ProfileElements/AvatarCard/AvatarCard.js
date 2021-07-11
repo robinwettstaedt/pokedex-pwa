@@ -1,11 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { AuthContext } from '../../../../contexts/AuthContext';
-import {
-  Username,
-  AvatarImage,
-  AvatarWrapper,
-  CaughtWrapper,
-} from './styles/styles';
+import { Username, AvatarImage, CaughtWrapper } from './styles/styles';
 import app from '../../../../utils/Firebase';
 
 function AvatarCard({ count }) {
@@ -33,14 +28,14 @@ function AvatarCard({ count }) {
   }, [currentUser.photoURL, currentUser]);
 
   return (
-    <AvatarWrapper>
+    <>
       <AvatarImage src={userImageURL} alt="user" />
       <Username to="/profile">{currentUser.displayName}</Username>
 
       <CaughtWrapper>
         <div>Pokemon caught:</div> <div>{count} / 151</div>
       </CaughtWrapper>
-    </AvatarWrapper>
+    </>
   );
 }
 
