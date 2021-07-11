@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../../contexts/AuthContext';
 import { ModalContext } from '../../../../contexts/ModalContext';
 import Modal from '../../../../components/Modal/Modal';
+import { Button, ActionWrapper, Wrapper } from './styles/styles';
 
 function DeleteAccount() {
   const { currentUser } = useContext(AuthContext);
@@ -23,15 +24,16 @@ function DeleteAccount() {
   };
 
   return (
-    <div>
-      <button onClick={deleteAccount}>Delete Account</button>
-      <Modal
-        setShowModal={setShowModal}
-        showModal={showModal}
-        modalContent={modalContent}
-      />
-      ;
-    </div>
+    <Wrapper>
+      <ActionWrapper>
+        <Button onClick={deleteAccount}>Delete Account</Button>
+        <Modal
+          setShowModal={setShowModal}
+          showModal={showModal}
+          modalContent={modalContent}
+        />
+      </ActionWrapper>
+    </Wrapper>
   );
 }
 

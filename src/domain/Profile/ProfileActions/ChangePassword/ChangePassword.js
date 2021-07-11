@@ -2,6 +2,16 @@ import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../contexts/AuthContext';
 import { ModalContext } from '../../../../contexts/ModalContext';
 import Modal from '../../../../components/Modal/Modal';
+import {
+  Wrapper,
+  ActionWrapper,
+  HeaderWrapper,
+  HeaderText,
+  Form,
+  Label,
+  Input,
+  Button,
+} from './styles/styles';
 
 function ChangeUsername() {
   const { currentUser } = useContext(AuthContext);
@@ -18,6 +28,7 @@ function ChangeUsername() {
     e.preventDefault();
     try {
       await currentUser.updatePassword(newPassword);
+      setNewPassword('');
       setModalContent(
         <p>
           modalContent for confirmation: Your Password has been updated
@@ -37,20 +48,33 @@ function ChangeUsername() {
   };
 
   return (
-    <div>
-      <form onSubmit={changePassword}>
-        <label>
-          new desired password
-          <input type="password" value={newPassword} onChange={handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-      <Modal
-        setShowModal={setShowModal}
-        showModal={showModal}
-        modalContent={modalContent}
-      />
-    </div>
+    <Wrapper>
+      <ActionWrapper>
+        <HeaderWrapper>
+          <HeaderText>
+            Enter your desired new Password below and hit submit to change it.
+          </HeaderText>
+        </HeaderWrapper>
+        <Form onSubmit={changePassword}>
+          <Label for="password">new desired password</Label>
+          <Input
+            type="password"
+            name="password"
+            value={newPassword}
+            onChange={handleChange}
+            placeholder="New Password"
+          />
+          <Button type="submit" value="Submit">
+            Submit
+          </Button>
+        </Form>
+        <Modal
+          setShowModal={setShowModal}
+          showModal={showModal}
+          modalContent={modalContent}
+        />
+      </ActionWrapper>
+    </Wrapper>
   );
 }
 
