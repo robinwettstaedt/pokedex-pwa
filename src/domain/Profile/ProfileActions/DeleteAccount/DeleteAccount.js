@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import { AuthContext } from '../../../contexts/AuthContext';
-import { ModalContext } from '../../../contexts/ModalContext';
-import Modal from '../../../components/Modal/Modal';
+import { AuthContext } from '../../../../contexts/AuthContext';
+import { ModalContext } from '../../../../contexts/ModalContext';
+import Modal from '../../../../components/Modal/Modal';
 
 function DeleteAccount() {
   const { currentUser } = useContext(AuthContext);

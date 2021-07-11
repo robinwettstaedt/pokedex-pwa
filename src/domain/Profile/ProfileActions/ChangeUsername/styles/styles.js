@@ -2,18 +2,15 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
-
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 1rem;
 
   color: ${(props) => props.theme.primaryFontColor};
 `;
 
 export const ActionWrapper = styled.div`
-  height: 90vh;
   width: 90vw;
   max-width: 600px;
   padding: 2rem 1rem;

@@ -1,15 +1,19 @@
-import React, { useState, useContext } from 'react';
-import { AuthContext } from '../../../contexts/AuthContext';
-import { ModalContext } from '../../../contexts/ModalContext';
-import Modal from '../../../components/Modal/Modal';
-import app from '../../../utils/Firebase';
-import { ActionWrapper, Wrapper, Input, Button, Form } from './styles/styles';
+import React, { useState, useContext, useRef } from 'react';
+import { AuthContext } from '../../../../contexts/AuthContext';
+import { ModalContext } from '../../../../contexts/ModalContext';
+import Modal from '../../../../components/Modal/Modal';
+import app from '../../../../utils/Firebase';
+import { ActionWrapper, Wrapper, FileInput, Button } from './styles/styles';
 
 function ChangeAvatar() {
   const { currentUser } = useContext(AuthContext);
   const { showModal, setShowModal } = useContext(ModalContext);
-
   const [modalContent, setModalContent] = useState(<p>default modalContent</p>);
+  const hiddenFileInput = useRef(null);
+
+  const handleClick = (e) => {
+    hiddenFileInput.current.click();
+  };
 
   const onFileInput = async (e) => {
     try {
@@ -67,12 +71,11 @@ function ChangeAvatar() {
   return (
     <Wrapper>
       <ActionWrapper>
-        <Form>
-          <Input type="file" onChange={onFileInput} />
-          <Button onClick={restoreDefaultImage}>
-            Delete my Avatar picture
-          </Button>
-        </Form>
+        <FileInput ref={hiddenFileInput} type="file" onChange={onFileInput} />
+        <Button onClick={handleClick}>Choose File</Button>
+        <Button isBottom="true" onClick={restoreDefaultImage}>
+          Delete My Picture
+        </Button>
         <Modal
           setShowModal={setShowModal}
           showModal={showModal}

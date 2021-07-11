@@ -11,10 +11,10 @@ import SignUp from '../../domain/SignUp/SignUp';
 import DexList from '../../domain/Pokedex/DexList';
 import DexEntry from '../../domain/PokedexEntry/DexEntry';
 import Profile from '../../domain/Profile/Profile';
-import DeleteAccount from '../../domain/Profile/ProfileActions/DeleteAccount';
-import ChangePassword from '../../domain/Profile/ProfileActions/ChangePassword';
-import ChangeAvatar from '../../domain/Profile/ProfileActions/ChangeAvatar';
-import ChangeUsername from '../../domain/Profile/ProfileActions/ChangeUsername';
+import DeleteAccount from '../../domain/Profile/ProfileActions/DeleteAccount/DeleteAccount';
+import ChangePassword from '../../domain/Profile/ProfileActions/ChangePassword/ChangePassword';
+import ChangeAvatar from '../../domain/Profile/ProfileActions/ChangeAvatar/ChangeAvatar';
+import ChangeUsername from '../../domain/Profile/ProfileActions/ChangeUsername/ChangeUsername';
 
 const App = () => {
   const { theme } = useContext(ThemeChangeContext);
