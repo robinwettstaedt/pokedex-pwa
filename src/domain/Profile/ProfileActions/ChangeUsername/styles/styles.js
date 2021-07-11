@@ -1,17 +1,23 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
 
 export const Wrapper = styled.div`
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 0 ${(props) => props.theme.outsideMobilePaddingLeftRight};
 
-  color: ${(props) => props.theme.primaryFontColor};
+  @media only screen and (min-width: 768px) {
+    padding: 0 ${(props) => props.theme.outsideTabletPaddingLeftRight};
+  }
+
+  @media only screen and (min-width: 1024px) {
+    padding: 0 ${(props) => props.theme.outsideDesktopPaddingLeftRight};
+  }
 `;
 
 export const ActionWrapper = styled.div`
-  width: 90vw;
+  width: 100%;
   max-width: 600px;
   padding: 2rem 1rem;
 
@@ -44,28 +50,15 @@ export const HeaderWrapper = styled.div`
   justify-content: center;
   align-items: center;
   gap: 5vh;
-`;
-
-export const Heading = styled.div`
-  font-size: 1.5rem;
-  margin-top: 1rem;
-  text-align: center;
-
-  @media only screen and (min-width: 768px) {
-    font-size: 2.5rem;
-  }
-
-  @media only screen and (min-width: 1024px) {
-    font-size: 3.5rem;
-  }
+  margin-bottom: 32px;
 `;
 
 export const HeaderText = styled.div`
   text-align: center;
-  font-size: 1rem;
+  font-size: 1.5rem;
 
   @media only screen and (min-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 `;
 
@@ -100,14 +93,6 @@ export const Input = styled.input`
     padding: 1.5rem;
     font-size: 1.8rem;
     border-radius: 30px;
-  }
-`;
-
-export const AuthLink = styled(Link)`
-  color: ${(props) => props.theme.primaryFontColor};
-  /* text-decoration: none; */
-  @media only screen and (min-width: 768px) {
-    font-size: 1.8rem;
   }
 `;
 

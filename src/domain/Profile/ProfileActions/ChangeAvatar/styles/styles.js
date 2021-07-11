@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1rem;
+  padding: 0 1rem;
 
   color: ${(props) => props.theme.primaryFontColor};
 `;
