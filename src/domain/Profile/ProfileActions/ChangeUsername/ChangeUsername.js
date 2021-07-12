@@ -46,7 +46,7 @@ function ChangeUsername() {
           </HeaderText>
         </HeaderWrapper>
         <Form onSubmit={setUsername}>
-          <Label for="username">New Username</Label>
+          <Label htmlFor="username">New Username</Label>
           <Input
             type="text"
             value={newUsername}

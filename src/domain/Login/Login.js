@@ -55,10 +55,10 @@ const Login = () => {
         </HeaderWrapper>
 
         <Form onSubmit={handleLogin}>
-          <Label for="email">Email</Label>
+          <Label htmlFor="email">Email</Label>
 
           <Input name="email" type="email" placeholder="Email" />
-          <Label for="password">Password</Label>
+          <Label hmtlFor="password">Password</Label>
 
           <Input name="password" type="password" placeholder="Password" />
           <Button type="submit">Log in</Button>

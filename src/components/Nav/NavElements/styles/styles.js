@@ -4,16 +4,19 @@ import { Link } from 'react-router-dom';
 // Components for Avatar.js
 export const AvatarImage = styled.img`
   height: 40px;
+  width: 40px;
   border-radius: 50%;
   border: ${(props) => props.theme.primaryBorderValue};
   box-shadow: ${(props) => props.theme.boxShadow};
 
   @media only screen and (min-width: 768px) {
     height: 48px;
+    width: 48px;
   }
 
   @media only screen and (min-width: 1024px) {
     height: 64px;
+    width: 64px;
   }
 `;
 

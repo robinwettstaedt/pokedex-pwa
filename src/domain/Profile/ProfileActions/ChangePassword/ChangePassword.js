@@ -50,7 +50,7 @@ function ChangeUsername() {
           </HeaderText>
         </HeaderWrapper>
         <Form onSubmit={changePassword}>
-          <Label for="password">new desired password</Label>
+          <Label htmlFor="password">new desired password</Label>
           <Input
             type="password"
             name="password"

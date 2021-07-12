@@ -60,14 +60,14 @@ const SignUp = () => {
           </HeaderText>
         </HeaderWrapper>
         <Form onSubmit={handleSignUp}>
-          <Label for="email">Email</Label>
+          <Label htmlFor="email">Email</Label>
           <Input
             name="email"
             type="email"
             placeholder="Email"
             onChange={handleEmailChange}
           />
-          <Label for="password">Password</Label>
+          <Label htmlFor="password">Password</Label>
           <Input
             name="password"
             type="password"

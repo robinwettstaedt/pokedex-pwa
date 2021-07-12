@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../../contexts/AuthContext';
 import app from '../../../../utils/Firebase';
-import firebase from 'firebase';
+import firebase from 'firebase/app';
 import { BallWrapper, SVG } from './styles/styles';
 
 const CatchButton = ({

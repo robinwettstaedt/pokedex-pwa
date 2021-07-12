@@ -4,6 +4,7 @@ export const AvatarImage = styled.img`
   width: 50vw;
   height: 50vw;
   max-width: 320px;
+  max-height: 320px;
 
   border-radius: 50%;
   border: ${(props) => props.theme.primaryBorderValue};
@@ -11,6 +12,7 @@ export const AvatarImage = styled.img`
 
   @media only screen and (min-width: 1024px) {
     max-width: 380px;
+    max-height: 380px;
   }
 `;
 
