@@ -17,44 +17,57 @@ import ChangeAvatar from '../../domain/Profile/ProfileActions/ChangeAvatar/Chang
 import ChangeUsername from '../../domain/Profile/ProfileActions/ChangeUsername/ChangeUsername';
 import Modal from '../Modal/Modal';
 import { ModalContext } from '../../contexts/ModalContext';
+import Spinner from '../Spinner/Spinner';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const App = () => {
   const { theme } = useContext(ThemeChangeContext);
+  const { pending } = useContext(AuthContext);
   const { showModal } = useContext(ModalContext);
   return (
     <ThemeProvider theme={theme === 'dark' ? darkTheme : lightTheme}>
       <GlobalStyles theme={theme} />
       {showModal && <Modal />}
       <Router>
-        <div>
-          <PrivateRoute path="/" component={Nav} />
+        <>
+          {pending ? (
+            <Spinner />
+          ) : (
+            <>
+              <PrivateRoute path="/" component={Nav} />
 
-          <PrivateRoute exact path="/" component={Home} />
+              <PrivateRoute exact path="/" component={Home} />
 
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={SignUp} />
 
-          <PrivateRoute exact path="/profile" component={Profile} />
-          <PrivateRoute
-            exact
-            path="/profile/delete"
-            component={DeleteAccount}
-          />
-          <PrivateRoute exact path="/profile/avatar" component={ChangeAvatar} />
-          <PrivateRoute
-            exact
-            path="/profile/username"
-            component={ChangeUsername}
-          />
-          <PrivateRoute
-            exact
-            path="/profile/passwordchange"
-            component={ChangePassword}
-          />
+              <PrivateRoute exact path="/profile" component={Profile} />
+              <PrivateRoute
+                exact
+                path="/profile/delete"
+                component={DeleteAccount}
+              />
+              <PrivateRoute
+                exact
+                path="/profile/avatar"
+                component={ChangeAvatar}
+              />
+              <PrivateRoute
+                exact
+                path="/profile/username"
+                component={ChangeUsername}
+              />
+              <PrivateRoute
+                exact
+                path="/profile/passwordchange"
+                component={ChangePassword}
+              />
 
-          <PrivateRoute exact path="/pokedex" component={DexList} />
-          <PrivateRoute exact path="/pokedex/:id" component={DexEntry} />
-        </div>
+              <PrivateRoute exact path="/pokedex" component={DexList} />
+              <PrivateRoute exact path="/pokedex/:id" component={DexEntry} />
+            </>
+          )}
+        </>
       </Router>
     </ThemeProvider>
   );
