@@ -15,8 +15,11 @@ import {
   AuthLink,
 } from '../../components/AuthForm/styles/styles.js';
 import ThemeChanger from '../../components/Nav/DropoutNav/DropoutElements/ThemeChanger.js';
+import { ModalContext } from '../../contexts/ModalContext.js';
 
 const Login = () => {
+  const { setModalContent, setShowModal } = useContext(ModalContext);
+
   let history = useHistory();
 
   const handleLogin = useCallback(
@@ -29,10 +32,16 @@ const Login = () => {
           .signInWithEmailAndPassword(email.value, password.value);
         history.push('/');
       } catch (error) {
-        alert('There has been an error: ', error);
+        setModalContent(
+          <>
+            There has been an issue with the Login. Please try again and make
+            sure your input is correct.
+          </>
+        );
+        setShowModal(true);
       }
     },
-    [history]
+    [history, setModalContent, setShowModal]
   );
 
   const { currentUser } = useContext(AuthContext);

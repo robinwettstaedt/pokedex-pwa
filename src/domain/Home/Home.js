@@ -11,12 +11,14 @@ import {
   SpacerDot,
   EmptyWrapper,
 } from './styles/styles';
+import { ModalContext } from '../../contexts/ModalContext';
 
 const Home = () => {
   const { currentUser } = useContext(AuthContext);
   const [initialCards, setInitialCards] = useState(null);
   const [additionalCards, setAdditionalCards] = useState(null);
   const [renderAdditional, setRenderAdditional] = useState(false);
+  const { setModalContent, setShowModal } = useContext(ModalContext);
 
   const createPokemonList = () => {
     let numbersObj = {};
@@ -47,6 +49,18 @@ const Home = () => {
             uid: currentUser.uid,
             caughtPokemonList: list,
           });
+          setModalContent(
+            <>
+              Hello and welcome! This is a Progressive Web App and it is not
+              optimized for desktop use! Please install it on your mobile device
+              via the installation prompt!
+              <br />
+              <br />
+              You can change your Username and Avatar Image in the profile
+              section and mark Pokémon as caught. Have fun!
+            </>
+          );
+          setShowModal(true);
         }
 
         // logic for the displaying of caught pokemon by date
@@ -110,6 +124,9 @@ const Home = () => {
       <Heading>Your Catches</Heading>
       <CardWrapper>
         {initialCards && initialCards.length === 0 && (
+          <EmptyWrapper>You haven't caught any Pokemon yet!</EmptyWrapper>
+        )}
+        {!initialCards && (
           <EmptyWrapper>You haven't caught any Pokemon yet!</EmptyWrapper>
         )}
 

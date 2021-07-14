@@ -15,8 +15,11 @@ import {
   AuthLink,
 } from '../../components/AuthForm/styles/styles.js';
 import ThemeChanger from '../../components/Nav/DropoutNav/DropoutElements/ThemeChanger.js';
+import { ModalContext } from '../../contexts/ModalContext';
 
 const SignUp = () => {
+  const { setModalContent, setShowModal } = useContext(ModalContext);
+
   let history = useHistory();
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
@@ -37,10 +40,16 @@ const SignUp = () => {
         await app.auth().createUserWithEmailAndPassword(email, password);
         history.push('/');
       } catch (error) {
-        alert('There has been an error: ', error);
+        setModalContent(
+          <>
+            There has been an issue with the Sign Up. Your password should be at
+            least 6 characters long.
+          </>
+        );
+        setShowModal(true);
       }
     },
-    [history, email, password]
+    [history, email, password, setModalContent, setShowModal]
   );
   const { currentUser } = useContext(AuthContext);
   if (currentUser) {
