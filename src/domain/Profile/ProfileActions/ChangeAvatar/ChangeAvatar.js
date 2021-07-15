@@ -13,28 +13,47 @@ function ChangeAvatar() {
     hiddenFileInput.current.click();
   };
 
+  const initiateIssueModal = () => {
+    setModalContent(
+      <>
+        There has been an issue with the Avatar change. Please relog and try
+        again.
+      </>
+    );
+    setShowModal(true);
+  };
+
+  const validateFile = (file) => {
+    if (
+      file.type === 'image/png' ||
+      file.type === 'image/jpg' ||
+      file.type === 'image/jpeg'
+    ) {
+      return true;
+    }
+    return false;
+  };
+
   const onFileInput = async (e) => {
     try {
       const file = e.target.files[0];
-      const storageRef = app.storage().ref().child('userImages');
-      const fileRef = storageRef.child(file.name);
-      await fileRef.put(file);
+      if (validateFile(file)) {
+        const storageRef = app.storage().ref().child('userImages');
+        const fileRef = storageRef.child(currentUser.uid);
+        await fileRef.put(file);
 
-      const url = await fileRef.getDownloadURL();
+        const url = await fileRef.getDownloadURL();
 
-      await currentUser.updateProfile({
-        photoURL: url,
-      });
-      setModalContent(<>Your Avatar Image has been updated!</>);
-      setShowModal(true);
+        await currentUser.updateProfile({
+          photoURL: url,
+        });
+        setModalContent(<>Your Avatar Image has been updated!</>);
+        setShowModal(true);
+      } else {
+        initiateIssueModal();
+      }
     } catch {
-      setModalContent(
-        <>
-          There has been an issue with the Avatar change. Please relog and try
-          again.
-        </>
-      );
-      setShowModal(true);
+      initiateIssueModal();
     }
   };
 

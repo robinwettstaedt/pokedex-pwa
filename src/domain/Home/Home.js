@@ -117,7 +117,7 @@ const Home = () => {
     };
 
     addNewUserFirestoreEntry();
-  }, [currentUser.uid]);
+  }, [currentUser.uid, setShowModal, setModalContent]);
 
   return (
     <Wrapper>
