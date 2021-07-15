@@ -14,7 +14,15 @@ const Dropout = ({ isOpen, setDropoutOpen }) => {
     return (
       <>
         <Background setDropoutOpen={setDropoutOpen} />
-        <Wrapper>
+        <Wrapper
+          initial={{ x: 100 }}
+          animate={{
+            x: 0,
+          }}
+          transition={{
+            duration: 0.05,
+          }}
+        >
           <Spacer>
             <ClosingButton setDropoutOpen={setDropoutOpen} />
             <HomeLink setDropoutOpen={setDropoutOpen} />

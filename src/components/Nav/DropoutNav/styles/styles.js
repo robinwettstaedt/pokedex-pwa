@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
   color: ${(props) => props.theme.primaryFontColor};
   background: ${(props) => props.theme.primaryBackgroundColor};
 
