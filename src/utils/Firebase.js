@@ -5,12 +5,12 @@ import 'firebase/storage';
 
 // Initialize Firebase
 const app = firebase.initializeApp({
-  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  apiKey: 'AIzaSyCkPC7j_BskE4WOEIrpaqF0MXIQEEg6JyU',
+  authDomain: 'pokedex-production-a35b7.firebaseapp.com',
+  projectId: 'pokedex-production-a35b7',
+  storageBucket: 'pokedex-production-a35b7.appspot.com',
+  messagingSenderId: '238509295008',
+  appId: '1:238509295008:web:3e9d9cbbb4b095c1e050c5',
 });
 
 export const auth = app.auth();
