@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useContext } from 'react';
+import React, { useState, useCallback, useContext, useEffect } from 'react';
 import { useHistory, withRouter, Redirect } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthContext';
 import app from '../../utils/Firebase';
@@ -51,6 +51,19 @@ const SignUp = () => {
     },
     [history, email, password, setModalContent, setShowModal]
   );
+
+  useEffect(() => {
+    setModalContent(
+      <>
+        For convinience sake there is no need to enter your actual email address
+        to register. Feel free to choose any random email and password for
+        signing up, there is no validation as this is just a side project I
+        created while learning React.
+      </>
+    );
+    setShowModal(true);
+  }, [setModalContent, setShowModal]);
+
   const { currentUser } = useContext(AuthContext);
   if (currentUser) {
     return <Redirect to="/" />;
