@@ -4,8 +4,8 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import {
   ExternalLinkWrapper,
   StyledAnchorTag,
-  TextAndIconWrapper,
-  LinkText,
+  GitLinkWrapper,
+  Text,
 } from './styles/styles';
 import Media from 'react-media';
 
@@ -14,16 +14,12 @@ const HomeLink = () => {
     <Media query="(min-width: 1200px)">
       {(matches) =>
         matches ? (
-          <TextAndIconWrapper>
-            <LinkText href="https://github.com/robinwettstaedt">
-              GitHub
-            </LinkText>
+          <GitLinkWrapper href="https://github.com/robinwettstaedt">
+            <Text>GitHub</Text>
             <ExternalLinkWrapper>
-              <StyledAnchorTag href="https://github.com/robinwettstaedt">
-                <FontAwesomeIcon icon={faGithub} size="3x" />
-              </StyledAnchorTag>
+              <FontAwesomeIcon icon={faGithub} size="3x" />
             </ExternalLinkWrapper>
-          </TextAndIconWrapper>
+          </GitLinkWrapper>
         ) : (
           <ExternalLinkWrapper>
             <StyledAnchorTag href="https://github.com/robinwettstaedt">

@@ -71,19 +71,54 @@ export const DroputBackground = styled.div`
 `;
 
 // styles for anything above 1200px view width
-export const TextAndIconWrapper = styled.div`
+export const TextAndIconWrapper = styled(Link)`
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-decoration: none;
+  color: ${(props) => props.theme.primaryFontColor};
+`;
+
+export const ClosingWrapper = styled.div`
   width: 80%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 `;
 
+export const GitLinkWrapper = styled.a`
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: ${(props) => props.theme.primaryFontColor};
+  text-decoration: none;
+`;
+
 export const Text = styled.div`
-  font-size: 4rem;
+  font-size: 3rem;
 `;
 
 export const LinkText = styled.a`
   color: ${(props) => props.theme.primaryFontColor};
   text-decoration: none;
-  font-size: 4rem;
+  font-size: 3rem;
+`;
+
+export const IconWrapper = styled.div`
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 1.7rem;
+  }
 `;

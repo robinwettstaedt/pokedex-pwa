@@ -50,7 +50,7 @@ export const WideWrapper = styled(motion.div)`
   background: ${(props) => props.theme.primaryBackgroundColor};
 
   height: 100%;
-  width: 60%;
+  width: 70%;
   left: 60%;
   position: fixed;
   z-index: 3;
@@ -62,22 +62,19 @@ export const WideWrapper = styled(motion.div)`
   border-radius: ${(props) => props.theme.primaryBorderRadius};
   border: ${(props) => props.theme.primaryBorderValue};
   box-shadow: ${(props) => props.theme.boxShadow};
+
+  @media only screen and (min-width: 2000px) {
+    width: 50%;
+    left: 70%;
+  }
 `;
 
 export const WideSpacer = styled.div`
   height: 100%;
-  width: 60%;
-  padding: 2.5rem;
+  width: 70%;
+  padding: 4rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-
-  @media only screen and (min-width: 768px) {
-    padding: 4rem;
-  }
-
-  @media only screen and (min-width: 1024px) {
-    padding: 6rem;
-  }
 `;

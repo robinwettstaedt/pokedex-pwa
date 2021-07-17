@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimesCircle } from '@fortawesome/free-regular-svg-icons';
-import { Wrapper, TextAndIconWrapper, Text } from './styles/styles';
+import { Wrapper, ClosingWrapper, Text } from './styles/styles';
 import Media from 'react-media';
 
 const ClosingButton = ({ setDropoutOpen }) => {
@@ -13,7 +13,7 @@ const ClosingButton = ({ setDropoutOpen }) => {
     <Media query="(min-width: 1200px)">
       {(matches) =>
         matches ? (
-          <TextAndIconWrapper onClick={handleClick}>
+          <ClosingWrapper onClick={handleClick}>
             <Text>Close</Text>
             <Wrapper>
               <FontAwesomeIcon
@@ -22,7 +22,7 @@ const ClosingButton = ({ setDropoutOpen }) => {
                 onClick={handleClick}
               />
             </Wrapper>
-          </TextAndIconWrapper>
+          </ClosingWrapper>
         ) : (
           <Wrapper onClick={handleClick}>
             <FontAwesomeIcon

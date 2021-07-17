@@ -14,7 +14,7 @@ import {
   Button,
   AuthLink,
 } from '../../components/AuthForm/styles/styles.js';
-import ThemeChanger from '../../components/Nav/DropoutNav/DropoutElements/ThemeChanger.js';
+import AuthThemeChanger from '../../components/AuthForm/AuthThemeChanger/AuthThemeChanger';
 import { ModalContext } from '../../contexts/ModalContext';
 
 const SignUp = () => {
@@ -99,7 +99,7 @@ const SignUp = () => {
           />
           <Button type="submit">Sign Up</Button>
         </Form>
-        <ThemeChanger />
+        <AuthThemeChanger />
         <AuthLink to="/login">Log In instead</AuthLink>
       </AuthWrapper>
     </Wrapper>

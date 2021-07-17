@@ -142,3 +142,21 @@ export const Button = styled.button`
     border-radius: 30px;
   }
 `;
+
+export const ThemeWrapper = styled.div`
+  width: 30px;
+  height: 30px;
+  font-size: 1rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media only screen and (min-width: 768px) {
+    font-size: 1.3rem;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    font-size: 1.7rem;
+  }
+`;
