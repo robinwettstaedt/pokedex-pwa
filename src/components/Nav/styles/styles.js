@@ -31,7 +31,7 @@ export const PlaceholderNav = styled.div`
 `;
 
 export const RightWrapper = styled.div`
-  width: 85%;
+  width: 90%;
 
   display: flex;
   justify-content: flex-end;

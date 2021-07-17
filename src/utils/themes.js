@@ -72,4 +72,29 @@ export const GlobalStyles = createGlobalStyle`
      overflow-x: hidden;
    }
 
+   *:focus {
+    outline: none;
+   }
+
+      /* width */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
+      background: ${(props) =>
+        props.theme === 'dark' ? '#242632' : '#E5E5E5'};
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
+      background: #5a5a5a;
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+      background: #333;
+    }
+
 `;

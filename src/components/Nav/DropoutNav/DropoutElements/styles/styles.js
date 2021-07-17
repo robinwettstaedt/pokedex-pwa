@@ -69,3 +69,21 @@ export const DroputBackground = styled.div`
   position: fixed;
   z-index: 2;
 `;
+
+// styles for anything above 1200px view width
+export const TextAndIconWrapper = styled.div`
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const Text = styled.div`
+  font-size: 4rem;
+`;
+
+export const LinkText = styled.a`
+  color: ${(props) => props.theme.primaryFontColor};
+  text-decoration: none;
+  font-size: 4rem;
+`;

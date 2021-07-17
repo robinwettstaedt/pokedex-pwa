@@ -47,13 +47,7 @@ export const SearchWrapper = styled.div`
 `;
 
 // Components for SearchButton.js
-export const SearchButtonWrapper = styled.div`
-  @media only screen and (min-width: 768px) {
-  }
-
-  @media only screen and (min-width: 1024px) {
-  }
-`;
+export const SearchButtonWrapper = styled.div``;
 
 export const GlassWrapper = styled(Link)`
   color: ${(props) => props.theme.primaryFontColor};
@@ -83,7 +77,7 @@ export const SearchBox = styled.input`
   }
 
   @media only screen and (min-width: 1024px) {
-    height: 80px;
+    height: 70px;
     font-size: 2.5rem;
     padding: 1.5rem;
     border-radius: 40px;

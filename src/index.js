@@ -8,7 +8,7 @@ import { SearchProvider } from './contexts/SearchContext';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 
 ReactDOM.render(
-  <React.StrictMode>
+  <>
     <AuthProvider>
       <ThemeChangeProvider>
         <SearchProvider>
@@ -18,7 +18,7 @@ ReactDOM.render(
         </SearchProvider>
       </ThemeChangeProvider>
     </AuthProvider>
-  </React.StrictMode>,
+  </>,
   document.getElementById('root')
 );
 

@@ -37,6 +37,11 @@ export const AuthWrapper = styled.div`
     max-width: 800px;
     padding: 3rem 1rem;
   }
+
+  @media only screen and (min-width: 1200px) {
+    max-width: 600px;
+    padding: 3rem 1rem;
+  }
 `;
 
 export const HeaderWrapper = styled.div`
@@ -51,7 +56,6 @@ export const HeaderWrapper = styled.div`
 
 export const Heading = styled.div`
   font-size: 1.5rem;
-  margin-top: 1rem;
   text-align: center;
 
   @media only screen and (min-width: 768px) {
