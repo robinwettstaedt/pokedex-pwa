@@ -28,6 +28,15 @@ export const CardWrapper = styled.div`
   @media only screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
+  @media only screen and (min-width: 1200px) {
+    width: 90vw;
+  }
+  @media only screen and (min-width: 1600px) {
+    width: 75vw;
+  }
+  @media only screen and (min-width: 2000px) {
+    width: 70vw;
+  }
 `;
 
 export const Heading = styled.div`
@@ -41,6 +50,18 @@ export const Heading = styled.div`
 
   @media only screen and (min-width: 1024px) {
     font-size: 5rem;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    margin-left: 4vw;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    margin-left: 11vw;
+  }
+
+  @media only screen and (min-width: 2000px) {
+    margin-left: 14vw;
   }
 `;
 

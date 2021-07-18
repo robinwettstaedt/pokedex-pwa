@@ -17,6 +17,15 @@ export const ImageWrapper = styled.div`
   @media only screen and (min-width: 768px) {
     height: 42.5vw;
   }
+  @media only screen and (min-width: 1200px) {
+    height: 42.5vw;
+  }
+  @media only screen and (min-width: 1600px) {
+    height: 35vw;
+  }
+  @media only screen and (min-width: 2000px) {
+    height: 35vw;
+  }
 `;
 
 export const PokemonImage = styled.img`

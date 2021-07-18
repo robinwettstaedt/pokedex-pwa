@@ -51,9 +51,8 @@ const Home = () => {
           });
           setModalContent(
             <>
-              Hello and welcome! This is a Progressive Web App and it is not
-              optimized for desktop use! Please install it on your mobile device
-              via the installation prompt!
+              Hello and welcome! Please install this Progressive Web App on your
+              mobile device via the installation prompt for the best experience!
               <br />
               <br />
               You can change your Username and Avatar Image in the profile

@@ -30,6 +30,18 @@ export const CardWrapper = styled.div`
   @media only screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  @media only screen and (min-width: 1200px) {
+    width: 70vw;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    width: 60vw;
+  }
+
+  @media only screen and (min-width: 2000px) {
+    width: 50vw;
+  }
 `;
 
 export const ButtonWrapper = styled.div`
@@ -93,5 +105,17 @@ export const AvatarWrapper = styled.div`
   @media only screen and (min-width: 1024px) {
     gap: 72px;
     padding: 4rem;
+  }
+
+  @media only screen and (min-width: 1200px) {
+    width: 70vw;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    width: 60vw;
+  }
+
+  @media only screen and (min-width: 2000px) {
+    width: 50vw;
   }
 `;
