@@ -5,15 +5,8 @@ export const Wrapper = styled.div`
   width: 100vw;
   display: flex;
   align-items: center;
-  padding: 1rem ${(props) => props.theme.outsideMobilePaddingLeftRight};
-
-  @media only screen and (min-width: 768px) {
-    padding: 1rem ${(props) => props.theme.outsideTabletPaddingLeftRight};
-  }
-
-  @media only screen and (min-width: 1024px) {
-    padding: 1rem ${(props) => props.theme.outsideDesktopPaddingLeftRight};
-  }
+  justify-content: center;
+  padding: 1rem 0.75rem;
 `;
 
 export const List = styled.ul`
@@ -30,6 +23,18 @@ export const List = styled.ul`
 
   @media only screen and (min-width: 1024px) {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media only screen and (min-width: 1200px) {
+    width: 80vw;
+  }
+
+  @media only screen and (min-width: 1600px) {
+    width: 65vw;
+  }
+
+  @media only screen and (min-width: 2000px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 `;
 

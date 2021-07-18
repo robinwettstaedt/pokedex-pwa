@@ -30,6 +30,8 @@ const outsidePaddingLeftRight = {
   outsideMobilePaddingLeftRight: '0.8rem',
   outsideTabletPaddingLeftRight: '1.2rem',
   outsideDesktopPaddingLeftRight: '1.6rem',
+  outsideLargeDesktopPaddingLeftRight: '2.4rem',
+  outsideExtraLargeDesktopPaddingLeftRight: '3rem',
 };
 
 export const darkTheme = {

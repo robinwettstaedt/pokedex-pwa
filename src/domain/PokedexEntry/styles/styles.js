@@ -22,6 +22,10 @@ export const GridWrapper = styled.div`
   @media only screen and (min-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  @media only screen and (min-width: 1200px) {
+    width: 70vw;
+  }
 `;
 
 export const BottomSpacer = styled.div`
