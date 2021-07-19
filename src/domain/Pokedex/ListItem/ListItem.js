@@ -8,6 +8,7 @@ import {
   Ball,
   BallPlaceholder,
   Sprite,
+  ListElement,
 } from './styles/styles';
 
 const ListItem = ({ number, index, caught }) => {
@@ -33,30 +34,32 @@ const ListItem = ({ number, index, caught }) => {
     return (
       <div>
         <ListEntry key={number}>
-          {caught ? (
-            theme === 'dark' ? (
-              <Ball
-                height={20}
-                src={process.env.PUBLIC_URL + `/icons/pokeball-white.png`}
-                alt={`Pokemon Number: ${number}`}
-              />
+          <ListElement to={`/pokedex/${index}`}>
+            {caught ? (
+              theme === 'dark' ? (
+                <Ball
+                  height={20}
+                  src={process.env.PUBLIC_URL + `/icons/pokeball-white.png`}
+                  alt={`Pokemon Number: ${number}`}
+                />
+              ) : (
+                <Ball
+                  height={20}
+                  src={process.env.PUBLIC_URL + `/icons/pokeball-grey.png`}
+                  alt={`Pokemon Number: ${number}`}
+                />
+              )
             ) : (
-              <Ball
-                height={20}
-                src={process.env.PUBLIC_URL + `/icons/pokeball-grey.png`}
-                alt={`Pokemon Number: ${number}`}
-              />
-            )
-          ) : (
-            <BallPlaceholder />
-          )}
-          <Name to={`/pokedex/${index}`}>
-            #{number} {namesArray[index - 1]}
-          </Name>
-          <Sprite
-            src={process.env.PUBLIC_URL + `/sprites/${number}MS.png`}
-            alt={`Pokemon Number: ${number}`}
-          />
+              <BallPlaceholder />
+            )}
+            <Name>
+              #{number} {namesArray[index - 1]}
+            </Name>
+            <Sprite
+              src={process.env.PUBLIC_URL + `/sprites/${number}MS.png`}
+              alt={`Pokemon Number: ${number}`}
+            />
+          </ListElement>
         </ListEntry>
       </div>
     );

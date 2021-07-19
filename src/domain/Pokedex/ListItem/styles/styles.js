@@ -38,10 +38,15 @@ export const List = styled.ul`
   }
 `;
 
-export const ListEntry = styled.li`
+export const ListEntry = styled.li``;
+
+export const ListElement = styled(Link)`
   background-color: ${(props) => props.theme.primaryCardBackgroundColor};
   height: 60px;
   padding: 1rem;
+
+  color: ${(props) => props.theme.primaryFontColor};
+  text-decoration: none;
 
   display: flex;
   align-items: center;
@@ -59,9 +64,7 @@ export const ListEntry = styled.li`
   }
 `;
 
-export const Name = styled(Link)`
-  color: ${(props) => props.theme.primaryFontColor};
-  text-decoration: none;
+export const Name = styled.div`
   font-size: 24px;
   margin-left: 1rem;
 

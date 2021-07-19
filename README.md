@@ -1,70 +1,36 @@
-# Getting Started with Create React App
+# Robin's Pokédex
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a Progressive Web App I created in order to gain more experience with React.
 
-## Available Scripts
+</br>
 
-In the project directory, you can run:
+## Technologies used
 
-### `npm start`
+- [React](https://reactjs.org/) as the main underlying JS Framework
+- [React Context-API](https://reactjs.org/docs/context.html) for State Management
+- [Firebase](https://firebase.google.com/) for Authentication and as the Database
+- [Figma](https://www.figma.com/) as the Design Tool
+- [styled-components](https://styled-components.com/) for styling and theming
+- [framer-motion](https://www.framer.com/motion/) for reliable animations in React
+- [FontAwesome](https://fontawesome.com/) provides the icons used
+- [Netlify](https://www.netlify.com/) as the Hosting Provider
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+</br>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Lessons Learned
 
-### `npm test`
+Taking the project from just a wish to work on something bigger than a landing page or school assignment to a working, installable PWA all by myself was an incredible experience.
+Having full control over the features and technologies used, as well as being responsible for anything from the design to deployment makes the app really feel like my own.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+React in conjunction with Firebase and styled-components create such an awesome development experience. Deploying with Netlify couldn't be easier and designing is actually fun when using Figma.
+I learned a lot about all these technologies, as well as consuming REST-APIs and even some No-SQL data modelling with Firestore.
 
-### `npm run build`
+The project gave me the motivation to code every day and ignited the will in me to keep adding bigger and better apps to my personal portfolio.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+</br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Acknowledgements
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- [PokéAPI](https://pokeapi.co/)
+- [FrontendMasters.com](https://frontendmasters.com/)
+- [README editor](https://readme.so)
