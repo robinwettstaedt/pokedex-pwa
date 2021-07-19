@@ -1,6 +1,8 @@
 # Robin's Pokédex
 
-This project is a Progressive Web App I created in order to gain more experience with React.
+This project is a Progressive Web App I inititally created in order to gain more experience with React. 
+
+I wanted to see how far I can take a project including technologies new to me on my own.
 
 </br>
 
